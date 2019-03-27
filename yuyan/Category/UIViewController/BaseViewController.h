@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseNavigationBar.h"
 
 
 @interface BaseViewController : UIViewController
@@ -22,6 +23,11 @@
 #pragma mark - Toast method
 - (void)showToast:(NSString *)msg;
 - (void)showErrorToast;
+
+#pragma mark - navigation
+@property (nonatomic, strong) BaseNavigationBar *navigationBar;
+
+- (void)setNavigationTitle:(NSString *)title LeftBtnHidden:(BOOL )left RightBtnHidden:(BOOL )right;
 
 
 @end

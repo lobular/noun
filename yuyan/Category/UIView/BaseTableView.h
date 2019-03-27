@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BaseTableView.h
 //  yuyan
 //
 //  Created by tangfeimu on 2019/3/27.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface BaseTableView : UITableView
 
 @end
 

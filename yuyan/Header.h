@@ -29,4 +29,6 @@
 #define ScaleHeight ScreenHeight / 667
 
 
+#import <IQKeyboardManager.h>
+
 #endif /* Header_h */

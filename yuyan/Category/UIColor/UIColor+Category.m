@@ -10,6 +10,79 @@
 
 @implementation UIColor (Category)
 
++ (UIColor *)mainColor {
+    return [self colorWithHexString:@"#2D9BFF"];
+}
++ (UIColor *)secondMainColor {
+    return [self colorWithHexString:@"#1EC8AF"];
+}
++ (UIColor *)backgroundColor {
+    return [self colorWithHexString:@"#FAFAFA" alpha:0.95];
+}
++ (UIColor *)textColorWithType:(NSInteger)type {
+    UIColor *color;
+    switch (type) {
+        case 0:
+        {
+            color = [UIColor blackColor];
+        }
+            break;
+        case 1:
+        {
+            color = [UIColor colorWithHexString:@"#BDBDBD"];
+        }
+            break;
+        case 2:
+        {
+            color = [UIColor colorWithHexString:@"#212121"];
+        }
+            break;
+        case 3:
+        {
+            color = [UIColor colorWithHexString:@"#757575"];
+        }
+            break;
+        case 4:
+        {
+            color = [UIColor colorWithHexString:@"#424242"];
+        }
+            break;
+        case 5:
+        {
+            color = [UIColor colorWithHexString:@"#909398"];
+        }
+            break;
+        case 6:
+        {
+            color = [UIColor colorWithHexString:@"#CCCCCC"];
+        }
+            break;
+        case 7:
+        {
+            color = [UIColor colorWithHexString:@"#CDCDCD"];
+        }
+            break;
+        case 8:
+        {
+            color = [UIColor colorWithHexString:@"#2289EF"];
+        }
+            break;
+        default:
+            break;
+    }
+    return color;
+}
+
++ (UIColor *)separationColor {
+    return [self colorWithHexString:@"#dcdcdc"];
+}
+
++ (UIColor *)searchViewBackgroundColor {
+    return [self colorWithHexString:@"#F8F8F9"];
+}
+
+
+
 + (UIColor *)colorWithHexString:(NSString *)color{
     return [self colorWithHexString:color alpha:1.0];
 }

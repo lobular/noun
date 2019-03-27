@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		61F0DAC3776D4B6475344318 /* libPods-yuyan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3E0D24465A31180A642ECF /* libPods-yuyan.a */; };
 		834E2202224B507D0022B6E8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2201224B507D0022B6E8 /* BaseViewController.m */; };
+		834E2205224B5E3E0022B6E8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2204224B5E3E0022B6E8 /* HomeViewController.m */; };
+		834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2207224B5F620022B6E8 /* ClassViewController.m */; };
+		834E220B224B5F700022B6E8 /* WellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E220A224B5F700022B6E8 /* WellViewController.m */; };
+		834E220E224B5F7D0022B6E8 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E220D224B5F7D0022B6E8 /* MineViewController.m */; };
+		834E2211224B68F00022B6E8 /* BaseNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2210224B68F00022B6E8 /* BaseNavigationBar.m */; };
+		834E2214224B72B90022B6E8 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2213224B72B90022B6E8 /* BaseTableView.m */; };
 		83A93AA4224B134B00644BE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A93AA2224B134B00644BE2 /* Main.storyboard */; };
 		83A93AA6224B134D00644BE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A93AA5224B134D00644BE2 /* Assets.xcassets */; };
 		83A93AA9224B134D00644BE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A93AA7224B134D00644BE2 /* LaunchScreen.storyboard */; };
@@ -16,7 +22,6 @@
 		83A93AC1224B134D00644BE2 /* yuyanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AC0224B134D00644BE2 /* yuyanUITests.m */; };
 		83A93ADC224B181700644BE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AD2224B181700644BE2 /* main.m */; };
 		83A93ADD224B181700644BE2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AD3224B181700644BE2 /* AppDelegate.m */; };
-		83A93ADE224B181700644BE2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93ADA224B181700644BE2 /* ViewController.m */; };
 		83A93AE3224B1A9100644BE2 /* NetWorkSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AE2224B1A9100644BE2 /* NetWorkSingle.m */; };
 		83A93AE6224B21B100644BE2 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AE5224B21B100644BE2 /* Tools.m */; };
 		83A93AED224B24CB00644BE2 /* RequestFromNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AEC224B24CB00644BE2 /* RequestFromNet.m */; };
@@ -48,6 +53,18 @@
 		1B8D0C72B7DD0A8C6E474D7A /* Pods-yuyan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yuyan.release.xcconfig"; path = "Target Support Files/Pods-yuyan/Pods-yuyan.release.xcconfig"; sourceTree = "<group>"; };
 		834E2200224B507D0022B6E8 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		834E2201224B507D0022B6E8 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		834E2203224B5E3E0022B6E8 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		834E2204224B5E3E0022B6E8 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		834E2206224B5F620022B6E8 /* ClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
+		834E2207224B5F620022B6E8 /* ClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassViewController.m; sourceTree = "<group>"; };
+		834E2209224B5F700022B6E8 /* WellViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WellViewController.h; sourceTree = "<group>"; };
+		834E220A224B5F700022B6E8 /* WellViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WellViewController.m; sourceTree = "<group>"; };
+		834E220C224B5F7D0022B6E8 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		834E220D224B5F7D0022B6E8 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		834E220F224B68F00022B6E8 /* BaseNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationBar.h; sourceTree = "<group>"; };
+		834E2210224B68F00022B6E8 /* BaseNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationBar.m; sourceTree = "<group>"; };
+		834E2212224B72B90022B6E8 /* BaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		834E2213224B72B90022B6E8 /* BaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		83A93A99224B134B00644BE2 /* yuyan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yuyan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A93AA3224B134B00644BE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		83A93AA5224B134D00644BE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,8 +79,6 @@
 		83A93AD1224B181700644BE2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		83A93AD2224B181700644BE2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83A93AD3224B181700644BE2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		83A93ADA224B181700644BE2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		83A93ADB224B181700644BE2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		83A93AE1224B1A9100644BE2 /* NetWorkSingle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWorkSingle.h; sourceTree = "<group>"; };
 		83A93AE2224B1A9100644BE2 /* NetWorkSingle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorkSingle.m; sourceTree = "<group>"; };
 		83A93AE4224B21B100644BE2 /* Tools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
@@ -231,6 +246,8 @@
 		83A93AD6224B181700644BE2 /* ClassViewController */ = {
 			isa = PBXGroup;
 			children = (
+				834E2206224B5F620022B6E8 /* ClassViewController.h */,
+				834E2207224B5F620022B6E8 /* ClassViewController.m */,
 			);
 			path = ClassViewController;
 			sourceTree = "<group>";
@@ -238,6 +255,8 @@
 		83A93AD7224B181700644BE2 /* WellViewController */ = {
 			isa = PBXGroup;
 			children = (
+				834E2209224B5F700022B6E8 /* WellViewController.h */,
+				834E220A224B5F700022B6E8 /* WellViewController.m */,
 			);
 			path = WellViewController;
 			sourceTree = "<group>";
@@ -245,6 +264,8 @@
 		83A93AD8224B181700644BE2 /* MIneViewController */ = {
 			isa = PBXGroup;
 			children = (
+				834E220C224B5F7D0022B6E8 /* MineViewController.h */,
+				834E220D224B5F7D0022B6E8 /* MineViewController.m */,
 			);
 			path = MIneViewController;
 			sourceTree = "<group>";
@@ -252,8 +273,8 @@
 		83A93AD9224B181700644BE2 /* HomeVIewController */ = {
 			isa = PBXGroup;
 			children = (
-				83A93ADB224B181700644BE2 /* ViewController.h */,
-				83A93ADA224B181700644BE2 /* ViewController.m */,
+				834E2203224B5E3E0022B6E8 /* HomeViewController.h */,
+				834E2204224B5E3E0022B6E8 /* HomeViewController.m */,
 			);
 			path = HomeVIewController;
 			sourceTree = "<group>";
@@ -286,6 +307,10 @@
 				83A93AF6224B273700644BE2 /* UIView+CornerRadiusLayer.m */,
 				83A93AFB224B273700644BE2 /* UIView+Toast.h */,
 				83A93AF7224B273700644BE2 /* UIView+Toast.m */,
+				834E220F224B68F00022B6E8 /* BaseNavigationBar.h */,
+				834E2210224B68F00022B6E8 /* BaseNavigationBar.m */,
+				834E2212224B72B90022B6E8 /* BaseTableView.h */,
+				834E2213224B72B90022B6E8 /* BaseTableView.m */,
 			);
 			name = UIView;
 			path = yuyan/Category/UIView;
@@ -495,16 +520,21 @@
 			files = (
 				83A93AFD224B273800644BE2 /* UIView+Toast.m in Sources */,
 				834E2202224B507D0022B6E8 /* BaseViewController.m in Sources */,
-				83A93ADE224B181700644BE2 /* ViewController.m in Sources */,
 				83A93AF4224B25DC00644BE2 /* UIColor+Category.m in Sources */,
+				834E2214224B72B90022B6E8 /* BaseTableView.m in Sources */,
 				83A93AE6224B21B100644BE2 /* Tools.m in Sources */,
 				83A93ADD224B181700644BE2 /* AppDelegate.m in Sources */,
 				83A93B01224B433000644BE2 /* MainTabBarController.m in Sources */,
 				83A93AFE224B273800644BE2 /* ErrorView.m in Sources */,
 				83A93AED224B24CB00644BE2 /* RequestFromNet.m in Sources */,
+				834E220B224B5F700022B6E8 /* WellViewController.m in Sources */,
+				834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */,
 				83A93AE3224B1A9100644BE2 /* NetWorkSingle.m in Sources */,
 				83A93ADC224B181700644BE2 /* main.m in Sources */,
+				834E220E224B5F7D0022B6E8 /* MineViewController.m in Sources */,
 				83A93AFC224B273800644BE2 /* UIView+CornerRadiusLayer.m in Sources */,
+				834E2211224B68F00022B6E8 /* BaseNavigationBar.m in Sources */,
+				834E2205224B5E3E0022B6E8 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

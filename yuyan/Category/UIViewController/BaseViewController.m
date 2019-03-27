@@ -11,7 +11,7 @@
 #import "UIView+Toast.h"
 #import "UIColor+Category.h"
 
-@interface BaseViewController ()
+@interface BaseViewController ()<UIGestureRecognizerDelegate,MyNavigationBarDelegate>
 
 @property (nonatomic, strong) JGProgressHUD *hud;
 @property (nonatomic, strong) JGProgressHUD *prototypeHud;
@@ -23,6 +23,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    self.navigationBar.delegate = self;
 }
 
 - (void)viewDidLoad {
@@ -30,6 +31,16 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
+
+#pragma mark - Navigationbar
+- (void)setNavigationTitle:(NSString *)title LeftBtnHidden:(BOOL )left RightBtnHidden:(BOOL )right {
+    if (!_navigationBar) {
+        _navigationBar = [[BaseNavigationBar alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavigationHeight) withTitle:title withLeftBtnHidden:left withRightBtnHidden:right];
+        self.navigationBar.delegate = self;
+    }
+    [self.view addSubview:_navigationBar];
 }
 
 #pragma mark - Hud method
@@ -42,6 +53,7 @@
     self.hud.textLabel.text = msg;
     [self.hud showInView:view animated:YES];
 }
+
 
 - (void)showProgressHudWithMsg:(NSString *)msg precentage:(CGFloat)precentage {
     if (precentage>1) {

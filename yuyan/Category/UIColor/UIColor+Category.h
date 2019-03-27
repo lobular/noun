@@ -10,6 +10,13 @@
 
 @interface UIColor (Category)
 
++ (UIColor *)mainColor;
++ (UIColor *)secondMainColor;
++ (UIColor *)backgroundColor;
++ (UIColor *)separationColor;
++ (UIColor *)searchViewBackgroundColor;
++ (UIColor *)textColorWithType:(NSInteger )type;
+
 + (UIColor *)colorWithHexString:(NSString *)color;
 + (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha;
 
