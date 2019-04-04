@@ -24,12 +24,12 @@
     switch (type) {
         case 0:
         {
-            color = [UIColor blackColor];
+            color = [UIColor colorWithHexString:@"#333333"];
         }
             break;
         case 1:
         {
-            color = [UIColor colorWithHexString:@"#BDBDBD"];
+            color = [UIColor colorWithHexString:@"#999999"];
         }
             break;
         case 2:

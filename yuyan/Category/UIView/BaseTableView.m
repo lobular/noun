@@ -17,7 +17,7 @@
         self.estimatedSectionFooterHeight = 0;
         if (@available(iOS 11.0, *)) {
             self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        } 
+        }
         self.scrollIndicatorInsets = self.contentInset;
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;

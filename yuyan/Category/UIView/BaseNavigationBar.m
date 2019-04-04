@@ -36,7 +36,7 @@
             _leftBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
             [self.leftBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
             self.leftBtn.frame = CGRectMake(0, frame.size.height - 44, 55, 42);
-            [self.leftBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+            [self.leftBtn setImage:[UIImage imageNamed:@"back_black_icon"] forState:UIControlStateNormal];
             [self.leftBtn setImageEdgeInsets:UIEdgeInsetsMake(14, 15, 10, 30)];
             [self addSubview:_leftBtn];
             self.leftBtn.hidden = l_hidden;

@@ -11,4 +11,5 @@ target 'yuyan' do
   pod 'WHC_AutoLayoutKit'
   pod 'SVProgressHUD'
   pod 'MJExtension'
+  
 end
