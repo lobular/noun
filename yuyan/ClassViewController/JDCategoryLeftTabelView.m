@@ -24,6 +24,7 @@ static NSString *leftCell = @"leftCell";
         self.dataSource = self;
         self.rowHeight = 50;
         self.selectedRow = 0;
+        self.separatorStyle = UITableViewCellSelectionStyleNone;
         [self registerClass:JDCategoryLeftTableCell.class forCellReuseIdentifier:leftCell];
     }
     return self;
@@ -48,6 +49,9 @@ static NSString *leftCell = @"leftCell";
     }else {
         cell.titleLabel.backgroundColor = [UIColor whiteColor];
         cell.titleLabel.textColor = [UIColor colorWithHexString:@"#888888"];
+    }
+    if (indexPath.row == 0) {
+        cell.line.hidden = NO;
     }
     return cell;
 }

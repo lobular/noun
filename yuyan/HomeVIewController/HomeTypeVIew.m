@@ -29,7 +29,7 @@
         [_backView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(click:)]];
         [_backView addSubview:_typeImage];
         _typeImage.whc_CenterX(0).whc_TopSpaceToView(27, _backView).whc_Width(30).whc_Height(30);
-        _typeImage.backgroundColor = [UIColor orangeColor];
+//        _typeImage.backgroundColor = [UIColor orangeColor];
         _typeLabel = [UILabel new];
         [_backView addSubview:_typeLabel];
         _typeLabel.whc_CenterX(0).whc_TopSpaceToView(15, _typeImage);

@@ -46,7 +46,7 @@
         _tipImage.whc_CenterY(0).whc_LeftSpace(16).
         whc_Width(60).whc_Height(60);
         [_tipImage setLayerCornerRadius:4];
-        _tipImage.backgroundColor = [UIColor redColor];
+//        _tipImage.backgroundColor = [UIColor redColor];
     }
     if (!_name) {
         _name = [UILabel new];
@@ -60,7 +60,8 @@
         _addImage = [UIImageView new];
         [self.contentView addSubview:_addImage];
         _addImage.whc_LeftSpaceToView(10, _tipImage).whc_TopSpaceToView(10, _name).whc_Width(12).whc_Height(14);
-        _addImage.backgroundColor = [UIColor orangeColor];
+        _addImage.image = [UIImage imageNamed:@"map_icon"];
+//        _addImage.backgroundColor = [UIColor orangeColor];
     }
     if (!_addLabel) {
         _addLabel = [UILabel new];
@@ -98,7 +99,7 @@
 }
 
 - (void)setValueForCell:(HomeModel *)model{
-//    [_tipImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.thumb]]];
+    [_tipImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.thumb]]];
     _addLabel.text = model.address;
     _name.text = model.title;
     _num.text = [NSString stringWithFormat:@"%@信条",model.creed_award];

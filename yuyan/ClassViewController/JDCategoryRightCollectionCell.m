@@ -127,8 +127,8 @@
     JDCategoryRightCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"JDCategoryRightCell" forIndexPath:indexPath];
     childModel *model = self.arr[indexPath.row];
     cell.goodNameLabel.text = [NSString stringWithFormat:@"%@", model.title];
-    cell.goodImageView.backgroundColor = [UIColor greenColor];
-//    [cell.goodImageView sd_setImageWithURL:[NSURL URLWithString:model.thumb]];
+//    cell.goodImageView.backgroundColor = [UIColor greenColor];
+    [cell.goodImageView sd_setImageWithURL:[NSURL URLWithString:model.thumb]];
     return cell;
 }
 
@@ -145,7 +145,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     childModel *model = self.arr[indexPath.row];
-    NSLog(@"%@",model.creed_id);
+    if ([_delegate respondsToSelector:@selector(sendWhich:)]) {
+        [_delegate sendWhich:model];
+    }
 }
 
 

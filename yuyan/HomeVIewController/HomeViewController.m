@@ -16,6 +16,8 @@
 #import <SVProgressHUD.h>
 #import "SelectCityViewController.h"
 #import "HomeTypeViewController.h"
+#import "SearchViewController.h"
+#import "HomeDetailViewController.h"
 
 @interface HomeViewController ()<YSBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,SelectCityDelegate>
 
@@ -104,8 +106,8 @@
             for (id temp in back.subviews) {
                 if ([temp isKindOfClass:[UIImageView class]]) {
                     UIImageView *image = temp;
-                    image.backgroundColor = [UIColor blueColor];
-//                    [image sd_setImageWithURL:[NSURL URLWithString:model.pic]];
+//                    image.backgroundColor = [UIColor blueColor];
+                    [image sd_setImageWithURL:[NSURL URLWithString:model.pic]];
                 }
                 if ([temp isKindOfClass:[UILabel class]]) {
                     UILabel *label = temp;
@@ -125,6 +127,7 @@
         TypeModel *model = weakSelf.dataDic[@"type"][num - 10000];
         HomeTypeViewController *type = [[HomeTypeViewController alloc] init];
         type.ID = model.cate_id;
+        type.name = model.title;
         type.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:type animated:YES];
     };
@@ -157,7 +160,12 @@
     return 90;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld",indexPath.row);
+    HomeModel *model = self.dataDic[@"creeds"][indexPath.row];
+    HomeDetailViewController *detail = [[HomeDetailViewController alloc] init];
+    detail.creed_id = model.creed_id;
+    detail.name = model.title;
+    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 #pragma mark 轮播图delegate
 - (void)bannerView:(YSBannerView *)bannerView didSelectItemAtIndex:(NSInteger)index{
@@ -176,6 +184,7 @@
     }
     [_headerView.city addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityAction)]];
     [_headerView.tipImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityAction)]];
+    [_headerView.searchImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(searchAction)]];
 }
 #pragma mark 选择城市
 - (void)cityAction{
@@ -191,6 +200,13 @@
     NSLog(@"%@",dic);
     _headerView.city.text = dic[@"city_name"];
     [self prepareData:@{@"city_id":dic[@"city_id"]}];
+}
+
+#pragma mark 搜索
+- (void)searchAction{
+    SearchViewController *search = [[SearchViewController alloc] init];
+    search.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:search animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

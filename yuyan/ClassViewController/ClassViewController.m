@@ -12,6 +12,8 @@
 #import "JDCategoryRightCollectionView.h"
 #import "RequestFromNet.h"
 #import <SVProgressHUD.h>
+#import "SearchViewController.h"
+#import "HomeDetailViewController.h"
 
 @interface ClassViewController ()<UIScrollViewDelegate, UICollectionViewDelegate>
 
@@ -100,13 +102,14 @@
     flowLayout.itemSize = CGSizeMake(ScreenWidth - 91, ScreenHeight - NavigationHeight);
     
     
-    JDCategoryRightCollectionView *rightView = [[JDCategoryRightCollectionView alloc] initWithFrame:CGRectMake(91, NavigationHeight, ScreenWidth - 91, ScreenHeight - NavigationHeight) collectionViewLayout:flowLayout];
+    JDCategoryRightCollectionView *rightView = [[JDCategoryRightCollectionView alloc] initWithFrame:CGRectMake(91, NavigationHeight + 1, ScreenWidth - 91, ScreenHeight - NavigationHeight) collectionViewLayout:flowLayout];
     self.rightView = rightView;
     self.rightView.childArr = self.childArr;
     self.rightView.fatherArr = self.fatherArr;
     rightView.delegate = self;
     rightView.pagingEnabled = YES;
     [self.view addSubview:rightView];
+    [self push];
     
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -150,6 +153,23 @@
         _headerView = [[ClassHeaderVIew alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, NavigationHeight)];
         [self.view addSubview:_headerView];
     }
+    [_headerView.content addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(searchAction)]];
 }
 
+- (void)searchAction{
+    SearchViewController *search = [[SearchViewController alloc] init];
+    search.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:search animated:YES];
+}
+
+- (void)push{
+    __weak __typeof(&*self)weakSelf = self;
+    self.rightView.value = ^(childModel *model) {
+        HomeDetailViewController *detail = [[HomeDetailViewController alloc] init];
+        detail.creed_id = model.creed_id;
+        detail.name = model.title;
+        detail.hidesBottomBarWhenPushed = YES;
+        [weakSelf.navigationController pushViewController:detail animated:YES];
+    };
+}
 @end

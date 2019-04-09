@@ -62,8 +62,7 @@
             _backImage.userInteractionEnabled = YES;
             _backImage.tag = 10000 + i * 3 + j;
             [_backImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(openAction:)]];
-            _backImage.backgroundColor = [UIColor redColor];
-//            [_backImage sd_setImageWithURL:[NSURL URLWithString:model.poster]];
+            [_backImage sd_setImageWithURL:[NSURL URLWithString:model.poster]];
             _cityName = [UILabel new];
             [self.backImage addSubview:_cityName];
             _cityName.whc_CenterX(0).whc_BottomSpace(17);
@@ -96,8 +95,7 @@
             _featureImage.userInteractionEnabled = YES;
             _featureImage.tag = 10000 + i * 3 + j;
             [_featureImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(featureAction:)]];
-            _featureImage.backgroundColor = [UIColor redColor];
-            //            [_backImage sd_setImageWithURL:[NSURL URLWithString:model.poster]];
+            [_featureImage sd_setImageWithURL:[NSURL URLWithString:model.poster]];
             _featureName = [UILabel new];
             [self.featureImage addSubview:_featureName];
             _featureName.whc_CenterX(0).whc_BottomSpace(17);

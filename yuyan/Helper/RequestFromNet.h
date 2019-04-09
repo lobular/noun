@@ -20,8 +20,18 @@ typedef void (^Fault)(NSError *error);
 //分类列表
 + (void)getDataForCateList:(NSString *)url succ:(Succ)succ fault:(Fault)fault;
 
-//信条详情
+//信条列表
 + (void)getDataForList:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+//信条详情
++ (void)getDetailForCreed:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+
+//通用接口
++ (void)getDataForCustom:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+
+//我的信条
++ (void)getListForCreed:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+//兑换记录
++ (void)getRecordForGoods:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
 
 @end
 

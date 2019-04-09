@@ -34,13 +34,13 @@
 
 - (void)setupChildViewControllers{
     HomeViewController *home = [[HomeViewController alloc] init];
-    [self childViewController:home imageName:@"" selectedImageName:@"" withTitle:@"首页"];
+    [self childViewController:home imageName:@"home_icon" selectedImageName:@"home_press_icon" withTitle:@"首页"];
     ClassViewController *class = [[ClassViewController alloc] init];
-    [self childViewController:class imageName:@"" selectedImageName:@"" withTitle:@"分类"];
+    [self childViewController:class imageName:@"classification_icon" selectedImageName:@"classification_press_icon" withTitle:@"分类"];
     WellViewController *well = [[WellViewController alloc] init];
-    [self childViewController:well imageName:@"" selectedImageName:@"" withTitle:@"福利"];
+    [self childViewController:well imageName:@"gift_icon" selectedImageName:@"gift_press_icon" withTitle:@"福利"];
     MineViewController *mine = [[MineViewController alloc] init];
-    [self childViewController:mine imageName:@"" selectedImageName:@"" withTitle:@"我的"];
+    [self childViewController:mine imageName:@"mine_icon" selectedImageName:@"mine_press_icon" withTitle:@"我的"];
     
     
     
@@ -49,10 +49,11 @@
 - (void)childViewController:(UIViewController *)vc imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName withTitle:(NSString *)title {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     nav.tabBarItem.title = title;
-    nav.tabBarItem.image = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    nav.tabBarItem.selectedImage = [[UIImage imageNamed:@""] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [nav.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor textColorWithType:0],NSFontAttributeName:[UIFont systemFontOfSize:10.0f]} forState:UIControlStateNormal];
+    nav.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nav.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     nav.navigationItem.title = title;
-    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor mainColor],NSFontAttributeName:[UIFont systemFontOfSize:18.0f]}];
+    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor textColorWithType:0],NSFontAttributeName:[UIFont systemFontOfSize:18.0f]}];
     [self addChildViewController:nav];
 }
 

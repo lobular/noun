@@ -12,6 +12,7 @@
 @interface HomeTypeViewController : BaseViewController
 
 @property (nonatomic,strong)NSString *ID;
+@property (nonatomic,strong)NSString *name;
 
 @end
 

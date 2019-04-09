@@ -11,6 +11,7 @@
 #import "HomeViewCell.h"
 #import <SVProgressHUD.h>
 #import "HomeModel.h"
+#import "HomeDetailViewController.h"
 
 @interface HomeTypeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -31,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationTitle:@"分类列表" LeftBtnHidden:NO RightBtnHidden:YES];
+    [self setNavigationTitle:[NSString stringWithFormat:@"%@分类",self.name] LeftBtnHidden:NO RightBtnHidden:YES];
     
     [self getData];
     [self createTable];
@@ -81,5 +82,12 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 90;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    HomeModel *model = self.dataArr[indexPath.row];
+    HomeDetailViewController *detail = [[HomeDetailViewController alloc] init];
+    detail.creed_id = model.creed_id;
+    detail.name = model.title;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 @end

@@ -32,7 +32,7 @@
         _tipImage.userInteractionEnabled = YES;
         [self addSubview:_tipImage];
         _tipImage.whc_CenterY(0).whc_LeftSpaceToView(8, _city).whc_Width(7).whc_Height(4);
-        _tipImage.backgroundColor = [UIColor redColor];
+        _tipImage.image = [UIImage imageNamed:@"systen-Triangle_press_icon"];
     }
     if (!_title) {
         _title = [UILabel new];
@@ -46,14 +46,15 @@
         [self addSubview:_newsImage];
         _newsImage.whc_CenterY(0).whc_RightSpace(16)
         .whc_Width(18).whc_Height(16);
-        _newsImage.backgroundColor = [UIColor blueColor];
+        _newsImage.image = [UIImage imageNamed:@"new_icon"];
         
     }
     if (!_searchImage) {
         _searchImage = [UIImageView new];
+        _searchImage.userInteractionEnabled = YES;
         [self addSubview:_searchImage];
         _searchImage.whc_CenterY(0).whc_RightSpaceToView(20, _newsImage).whc_CenterY(0).whc_Width(17).whc_Height(17);
-        _searchImage.backgroundColor = [UIColor orangeColor];
+        _searchImage.image = [UIImage imageNamed:@"system-serchb_press_icon"];
     }
 }
 

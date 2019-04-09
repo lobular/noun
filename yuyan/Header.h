@@ -36,6 +36,14 @@
 #define HomeAPI [NSString stringWithFormat:@"%@/v1/creed/index",URL]
 #define CateListAPI [NSString stringWithFormat:@"%@/v1/creed/cate-list",URL]   
 #define ListAPI [NSString stringWithFormat:@"%@/v1/creed/list",URL]
+#define DetailAPI [NSString stringWithFormat:@"%@/v1/creed/detail",URL]
+
+#define LoginAPI [NSString stringWithFormat:@"%@/v1/login",URL]
+#define CodeAPI  [NSString stringWithFormat:@"%@/v1/register/vercode",URL]
+#define RegisterAPI [NSString stringWithFormat:@"%@/v1/register",URL]
+
+#define ScoreAPI [NSString stringWithFormat:@"%@/v1/user/score-record",URL]
+#define RecordAPI [NSString stringWithFormat:@"%@/v1/user/goods-record",URL]
 
 
 #import <IQKeyboardManager.h>

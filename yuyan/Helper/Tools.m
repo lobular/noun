@@ -54,7 +54,8 @@
             NSString * timeStr = [NSString stringWithFormat:@"%0.2d",seconds];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                label.backgroundColor = color;
+                label.textColor = color;
+                label.font = FontSize(12);
                 label.text = [NSString stringWithFormat:@"%@%@",timeStr,subTitle];
             });
             timeOut--;

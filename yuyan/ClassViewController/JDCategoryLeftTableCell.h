@@ -11,4 +11,5 @@
 @interface JDCategoryLeftTableCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tabelView;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic,strong)UILabel *line;
 @end

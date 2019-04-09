@@ -14,6 +14,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         [self config];
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -24,22 +25,23 @@
         [self addSubview:_news];
         _news.whc_BottomSpace(13).whc_RightSpace(16).
         whc_Width(18).whc_Height(16);
-        _news.backgroundColor = [UIColor orangeColor];
+        _news.image = [UIImage imageNamed:@"new_press_icon"];
     }
     if (!_backView) {
         _backView = [UIView new];
         [self addSubview:_backView];
-        _backView.whc_LeftSpace(16).whc_BottomSpace(5).
+        _backView.whc_LeftSpace(16).whc_BottomSpace(10).
         whc_Height(28).whc_RightSpaceToView(16, _news);
         [_backView setLayerCornerRadius:5];
         _backView.backgroundColor = [UIColor colorWithHexString:@"#f1f3f5"];
     }
     if (!_search) {
         _search = [UIImageView new];
+        _search.userInteractionEnabled = YES;
         [_backView addSubview:_search];
         _search.whc_CenterY(0).whc_LeftSpace(12).
         whc_Height(17).whc_Width(17);
-        _search.backgroundColor = [UIColor blueColor];
+        _search.image = [UIImage imageNamed:@"system-serchbicon"];
     }
     if (!_content) {
         _content = [[UITextField alloc] init];

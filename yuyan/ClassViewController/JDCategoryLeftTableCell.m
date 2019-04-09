@@ -41,6 +41,14 @@
     [_titleLabel setLayerCornerRadius:15];
     _titleLabel.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:_titleLabel];
+    
+    if (!_line) {
+        _line = [UILabel new];
+        [self.contentView addSubview:_line];
+        _line.whc_TopSpace(0).whc_LeftSpace(0).whc_RightSpace(0).whc_Height(0.5);
+        _line.backgroundColor = [UIColor colorWithHexString:@"#f1f3f5"];
+        _line.hidden = YES;
+    }
 }
 
 

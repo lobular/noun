@@ -42,3 +42,28 @@
 
 @end
 
+@interface detailModel : NSObject
+
+@property (nonatomic,strong)NSString *address;
+@property (nonatomic,strong)NSString *creed_award;
+@property (nonatomic,strong)NSString *creed_remain;
+@property (nonatomic,strong)NSString *thumb;
+@property (nonatomic,strong)NSString *title;
+@property (nonatomic,strong)NSArray *questions;
+
+@end
+
+@interface questionModel : NSObject
+
+@property (nonatomic,strong)NSArray *answers;
+@property (nonatomic,strong)NSString *name;
+
+@end
+
+@interface isRightModel: NSObject
+
+@property (nonatomic,strong)NSString *name;
+@property (nonatomic,strong)NSString *is_true;
+
+@end
+

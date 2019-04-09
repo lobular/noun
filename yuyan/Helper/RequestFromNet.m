@@ -11,6 +11,7 @@
 #import <MJExtension.h>
 #import "HomeModel.h"
 #import "ClassModel.h"
+#import "MineModel.h"
 
 @implementation RequestFromNet
 
@@ -46,11 +47,52 @@
     }];
 }
 
-//信条详情
+//信条列表
 + (void)getDataForList:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(NSDictionary *dataDic) {
         NSArray *creeds = [HomeModel mj_objectArrayWithKeyValuesArray:dataDic[@"data"][@"creeds"]];
         NSDictionary *dic = @{@"list":creeds,@"status":dataDic[@"status"],@"message":dataDic[@"message"]};
+        succ(dic);
+    } failure:^(NSError *error) {
+        fault(error);
+    }];
+}
+//信条详情
++ (void)getDetailForCreed:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        detailModel *model = [detailModel mj_objectWithKeyValues:responseObject[@"data"][@"creed"]];
+        
+        NSArray *arr = [questionModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"questions"]];
+        
+        NSDictionary *dic = @{@"creed":model,@"questions":arr,@"message":responseObject[@"message"],@"status":responseObject[@"status"]};
+        succ(dic);
+    } failure:^(NSError *error) {
+        fault(error);
+    }];
+}
+//通用接口
++ (void)getDataForCustom:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle postWithURLString:url parameters:params success:^(NSDictionary *dataDic) {
+        succ (dataDic);
+    } failure:^(NSError *error) {
+        fault (error);
+    }];
+}
+//我的信条
++ (void)getListForCreed:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+         NSArray *arr = [MineModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"datalist"]];
+        NSDictionary *dic = @{@"data":arr,@"score":responseObject[@"data"][@"score"],@"status":responseObject[@"status"],@"message":responseObject[@"message"]};
+        succ(dic);
+    } failure:^(NSError *error) {
+        fault(error);
+    }];
+}
+//兑换记录
++ (void)getRecordForGoods:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        NSArray *arr = [RecordModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"records"]];
+        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"]};
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);

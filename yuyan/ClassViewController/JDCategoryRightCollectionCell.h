@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ClassModel.h"
+
+@protocol rightDelegate <NSObject>
+
+- (void)sendWhich:(childModel *)model;
+
+@end
 
 @interface JDCategoryRightCollectionCell : UICollectionViewCell
 @property (nonatomic, strong) NSString *sectionTitle;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic,strong)NSArray *arr;
+
+@property (nonatomic,weak)id<rightDelegate>delegate;
+
 @end

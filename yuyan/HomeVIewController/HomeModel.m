@@ -23,3 +23,15 @@
 @implementation TypeModel
 
 @end
+
+@implementation detailModel
+
+@end
+
+@implementation questionModel
+
+@end
+
+@implementation isRightModel
+
+@end

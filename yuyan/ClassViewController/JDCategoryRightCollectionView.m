@@ -10,7 +10,7 @@
 #import "JDCategoryRightCollectionCell.h"
 #import "ClassModel.h"
 
-@interface JDCategoryRightCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface JDCategoryRightCollectionView ()<UICollectionViewDelegate, UICollectionViewDataSource,rightDelegate>
 
 @end
 
@@ -41,24 +41,16 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     JDCategoryRightCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     ClassModel *model = self.fatherArr[indexPath.row];
+    cell.delegate = self;
     cell.sectionTitle = [NSString stringWithFormat:@"%@", model.title];
     NSArray *arr = self.childArr[indexPath.row];
     cell.count = arr.count;
     cell.arr = arr;
-//    if (indexPath.row == 0) {
-//        cell.count = 5;
-//    }else if (indexPath.row == 1) {
-//        cell.count = 22;
-//    }else if (indexPath.row == 2) {
-//        cell.count = 20;
-//    }else if (indexPath.row == 3) {
-//        cell.count = 7;
-//    }else if (indexPath.row == 4) {
-//        cell.count = 12;
-//    }else {
-//        cell.count = 10;
-//    }
     return cell;
+}
+
+- (void)sendWhich:(childModel *)model{
+    _value(model);
 }
 
 
