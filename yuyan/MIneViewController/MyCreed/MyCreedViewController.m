@@ -13,6 +13,8 @@
 #import "KeyChain.h"
 #import <SVProgressHUD.h>
 #import "MineModel.h"
+#import "CreedNoneView.h"
+#import "YuYanLoginViewController.h"
 
 @interface MyCreedViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -21,6 +23,8 @@
 
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)NSArray *arr;
+
+@property (nonatomic,strong)CreedNoneView *noneView;
 
 @end
 
@@ -47,15 +51,34 @@
 - (void)leftBtnAcion:(id)sender;{
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (void)createNone{
+    if (!_noneView) {
+        self.noneView = [[CreedNoneView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight - NavigationHeight)];
+    }
+    [self.view addSubview:_noneView];
+}
 
 - (void)getData{
     [SVProgressHUD showWithStatus:@"正在努力加载中..."];
     [RequestFromNet getListForCreed:ScoreAPI params:@{@"token":[KeyChain objectWithKey:@"token"]} succ:^(NSDictionary *dataDic) {
         [SVProgressHUD dismiss];
+        if ([[NSString stringWithFormat:@"%@",dataDic[@"errcode"]] isEqualToString:@"1"]) {
+            [SVProgressHUD showErrorWithStatus:@"登录失效,请重新登录"];
+            YuYanLoginViewController *login = [[YuYanLoginViewController alloc] init];
+            [self presentViewController:login animated:YES completion:nil];
+        }
         if ([dataDic[@"status"] isEqualToString:@"success"]) {
             self.arr = dataDic[@"data"];
+            if (self.arr.count == 0) {
+                [self.tableView removeFromSuperview];
+                self.tableView = nil;
+                [self createNone];
+            }else{
+                [self.noneView removeFromSuperview];
+                self.noneView = nil;
+                [self createTableView];
+            }
             self->score = [NSString stringWithFormat:@"%@",dataDic[@"score"]];
-            [self createTableView];
             [self.tableView reloadData];
         }else{
             [SVProgressHUD showErrorWithStatus:dataDic[@"message"]];

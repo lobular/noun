@@ -79,10 +79,6 @@ static NSString *ID = @"cell";
         _tipLabel.text = @"意见反馈";
         _tipImage.image = [UIImage imageNamed:@"feedback_icon"];
     }
-    if (row == 4) {
-        _tipLabel.text = @"关于我们";
-        _tipImage.image = [UIImage imageNamed:@"about_icon"];
-    }
 }
 
 @end

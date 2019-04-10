@@ -44,7 +44,11 @@
 
 #define ScoreAPI [NSString stringWithFormat:@"%@/v1/user/score-record",URL]
 #define RecordAPI [NSString stringWithFormat:@"%@/v1/user/goods-record",URL]
+#define RecordDetailAPI [NSString stringWithFormat:@"%@/v1/user/goods-record-detail",URL]
+#define FeedBackAPI [NSString stringWithFormat:@"%@/v1/user/feedback",URL]
 
+#define WellAPI [NSString stringWithFormat:@"%@/v1/goods/index",URL]
+#define WellDetailAPI [NSString stringWithFormat:@"%@/v1/goods/detail",URL]
 
 #import <IQKeyboardManager.h>
 #import <WHC_AutoLayout.h>

@@ -46,9 +46,10 @@
             [_rightBtn setTitleColor:[UIColor mainColor] forState:UIControlStateNormal];
             _rightBtn.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
             [_rightBtn addTarget:self action:@selector(clickRightBtn:) forControlEvents:UIControlEventTouchUpInside];
-            _rightBtn.frame = CGRectMake(frame.size.width - 70,frame.size.height - 44, 60, 42);
+            _rightBtn.frame = CGRectMake(frame.size.width - 35,frame.size.height - 30, 18, 16);
+            [_rightBtn setBackgroundImage:[[UIImage imageNamed:@"new_icon"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             _rightBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f];
-            [_rightBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 30, 10, 10)];
+//            [_rightBtn setImageEdgeInsets:UIEdgeInsetsMake(30, 30, 16, 12)];
             [_rightBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];
             [self addSubview:_rightBtn];
             _rightBtn.hidden = r_hidden;

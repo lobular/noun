@@ -51,6 +51,7 @@
             _num.font = FontSize(15);
             _context.whc_LeftSpaceToView(5, _num);
             _context.placeholder = @"请输入手机号";
+            _context.clearButtonMode = YES;
             _context.keyboardType = UIKeyboardTypeNumberPad;
         }else if (i == 1){
             _context.placeholder = @"请输入短信验证码";
@@ -66,7 +67,7 @@
         if (i == 1) {
             _code = [UILabel new];
             [self addSubview:_code];
-            _code.whc_CenterYToView(0, _context).whc_RightSpace(16).whc_Width(85).whc_Height(25);
+            _code.whc_CenterYToView(0, _context).whc_RightSpace(16).whc_Width(90).whc_Height(25);
             _code.text = @"获取验证码";
             _code.textAlignment = NSTextAlignmentCenter;
             _code.textColor = [UIColor colorWithHexString:@"#FD6D08"];
@@ -109,6 +110,8 @@
         }
     }else if (textField.tag == 10002){
         pwd = textField.text;
+    }else {
+        codeNum = textField.text;
     }
 }
 - (void)registerAction{

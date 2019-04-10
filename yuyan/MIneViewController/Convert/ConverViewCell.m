@@ -57,7 +57,6 @@ static NSString *ID = @"cell";
         [self.contentView addSubview:_time];
         _time.whc_TopSpaceToView(10, _name).whc_LeftSpaceToView(5, _tip);
         _time.textColor = [UIColor textColorWithType:1];
-        _time.text = @"杭州市滨江区长河街道466号";
         _time.font = FontSize(12);
     }
     if (!_line) {

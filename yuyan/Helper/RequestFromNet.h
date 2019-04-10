@@ -33,5 +33,11 @@ typedef void (^Fault)(NSError *error);
 //兑换记录
 + (void)getRecordForGoods:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
 
+//福利
++ (void)getWellFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+
+//福利
++ (void)getWellDetailFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+
 @end
 

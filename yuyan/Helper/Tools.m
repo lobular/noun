@@ -64,4 +64,11 @@
     dispatch_resume(_timer);
 }
 
++ (NSAttributedString *)text:(NSMutableAttributedString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color rang:(NSRange)rang;{
+    // 改变字体大小及类型
+    [text addAttribute:NSForegroundColorAttributeName value:color range:rang];
+    // 为label添加Attributed
+    return text;
+}
+
 @end

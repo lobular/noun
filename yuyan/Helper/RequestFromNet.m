@@ -12,6 +12,7 @@
 #import "HomeModel.h"
 #import "ClassModel.h"
 #import "MineModel.h"
+#import "WellModel.h"
 
 @implementation RequestFromNet
 
@@ -82,7 +83,7 @@
 + (void)getListForCreed:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
          NSArray *arr = [MineModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"datalist"]];
-        NSDictionary *dic = @{@"data":arr,@"score":responseObject[@"data"][@"score"],@"status":responseObject[@"status"],@"message":responseObject[@"message"]};
+        NSDictionary *dic = @{@"data":arr,@"score":responseObject[@"data"][@"score"],@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);
@@ -92,7 +93,26 @@
 + (void)getRecordForGoods:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
         NSArray *arr = [RecordModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"records"]];
-        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"]};
+        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        succ(dic);
+    } failure:^(NSError *error) {
+        fault(error);
+    }];
+}
+//福利
++ (void)getWellFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        NSArray *arr = [WellModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"goods"]];
+        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        succ(dic);
+    } failure:^(NSError *error) {
+        fault(error);
+    }];
+}
++ (void)getWellDetailFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        NSDictionary *dics = responseObject[@"data"][@"goods"];
+        NSDictionary *dic = @{@"data":dics,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);

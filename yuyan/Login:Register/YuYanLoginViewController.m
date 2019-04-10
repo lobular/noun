@@ -14,6 +14,8 @@
 #import <SVProgressHUD.h>
 #import "RequestFromNet.h"
 #import "KeyChain.h"
+#import "AppDelegate.h"
+#import "MainTabBarController.h"
 
 @interface YuYanLoginViewController ()<RegisterDelegate>
 {
@@ -95,6 +97,11 @@
                 [KeyChain saveObject:dataDic[@"data"][@"user"][@"score"] Forkey:@"score" ToKeyChainStore:NO];
                 [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"isLogin"];
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"isLoad" object:@"YES"];
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                MainTabBarController *tabViewController = (MainTabBarController *) appDelegate.window.rootViewController;
+                
+                [tabViewController setSelectedIndex:0];
                 [weakSelf dismissViewControllerAnimated:YES completion:nil];
             }else{
                 [SVProgressHUD showErrorWithStatus:dataDic[@"message"]];

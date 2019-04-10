@@ -14,6 +14,8 @@
 #import <SVProgressHUD.h>
 #import "MyCreed/MyCreedViewController.h"
 #import "ConvertViewController.h"
+#import "IdeaBack/IdeaBackViewController.h"
+#import "Set/SetViewController.h"
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -32,9 +34,6 @@
 - (void)reloadAction:(NSNotification *)noti{
     if (noti.object) {
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-//        NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
-//        HomeHeaderViewCell *cell = [self.tableView cellForRowAtIndexPath:index];
-//        cell.name.userInteractionEnabled = YES;
     }
 }
 
@@ -62,7 +61,7 @@
     return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return section == 0 ? 1 : 5;
+    return section == 0 ? 1 : 4;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
@@ -108,8 +107,16 @@
                 creed.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:creed animated:YES];
             }else if (indexPath.row == 2){
-                
+                SetViewController *set = [[SetViewController alloc] init];
+                set.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:set animated:YES];
             }
+            else if (indexPath.row == 3){
+                IdeaBackViewController *back = [[IdeaBackViewController alloc] init];
+                back.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:back animated:YES];
+            }
+            
         }else{
             [SVProgressHUD showErrorWithStatus:@"请您先登录"];
         }

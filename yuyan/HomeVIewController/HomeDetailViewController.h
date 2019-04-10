@@ -14,5 +14,8 @@
 @property (nonatomic,strong)NSString *creed_id;
 @property (nonatomic,strong)NSString *name;
 
+@property (nonatomic,strong)NSString *fromWhich; //是福利详情还是其他的
+@property (nonatomic,strong)NSString *good_id;
+
 @end
 

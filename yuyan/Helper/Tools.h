@@ -17,6 +17,7 @@
 
 + (void)startWithTime:(NSInteger)timeLine label:(UILabel *)label title:(NSString *)title countDownTitle:(NSString *)subTitle mainColor:(UIColor *)mColor countColor:(UIColor *)color;
 
++ (NSAttributedString *)text:(NSMutableAttributedString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color rang:(NSRange)rang;
 
 @end
 
