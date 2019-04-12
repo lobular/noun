@@ -197,16 +197,23 @@
 #pragma mark 兑换奖品/答题赢信条
 - (void)exchangeAction:(UIButton *)btn{
     if (btn.tag == 10000) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"确定使用%@信条兑换",self.dataDic[@"creed_price"]] preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是的" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            ExchangeViewController *exchange = [[ExchangeViewController alloc] init];
-            exchange.good_id = self.good_id;
-            [self.navigationController pushViewController:exchange animated:YES];
-        }];
-        [alertController addAction:cancelAction];
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+         if ([self.dataDic[@"creed_price"] integerValue] > [self.dataDic[@"num"] integerValue]) {
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前信条数不够" preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+             [alertController addAction:cancelAction];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }else{
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"确定使用%@信条兑换",self.dataDic[@"creed_price"]] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是的" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                ExchangeViewController *exchange = [[ExchangeViewController alloc] init];
+                exchange.good_id = self.good_id;
+                [self.navigationController pushViewController:exchange animated:YES];
+            }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+         }
         
     }else if(btn.tag == 10001){
         QuestionViewController *question = [[QuestionViewController alloc] init];

@@ -68,7 +68,6 @@
             for (BannerModel *model in self.dataDic[@"banner"]) {
                 [arr addObject:model.pic];
             }
-            [arr addObject:@"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1552895278&di=dd69d27f1f53d6d56387ef48cda1390e&src=http://img.zcool.cn/community/01b8c2588082ffa801219c771bf36b.jpg@2o.jpg"];
             self.bannerView.imageArray = arr;
             [self createType];
             [self.tableView reloadData];
@@ -169,7 +168,12 @@
 }
 #pragma mark 轮播图delegate
 - (void)bannerView:(YSBannerView *)bannerView didSelectItemAtIndex:(NSInteger)index{
-    NSLog(@"%ld",index);
+    BannerModel *model = self.dataDic[@"banner"][index];
+    HomeDetailViewController *detail = [[HomeDetailViewController alloc] init];
+    detail.creed_id = model.creed_id;
+    detail.name = model.title;
+    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 #pragma mark 导航栏
 - (void)createHeader{

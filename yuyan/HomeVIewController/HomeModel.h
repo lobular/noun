@@ -23,6 +23,7 @@
 
 @property (nonatomic,strong)NSString *pic;
 @property (nonatomic,strong)NSString *creed_id;
+@property (nonatomic,strong)NSString *title;
 
 @end
 
