@@ -39,5 +39,8 @@ typedef void (^Fault)(NSError *error);
 //福利
 + (void)getWellDetailFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
 
+//获取答题列表
++ (void)getQuestionListForNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+
 @end
 

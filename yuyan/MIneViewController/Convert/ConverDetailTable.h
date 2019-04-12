@@ -27,17 +27,26 @@
 
 @end
 
+typedef void (^ConverValue)(NSString *isClick);
+
 @interface ConverBtn : UITableViewCell
 
 @property (nonatomic,strong)UIButton *subBtn;
+@property (nonatomic,copy)ConverValue clickValue;
 
 + (instancetype)initWithTable:(UITableView *)table;
 
+
 @end
+
+
+typedef void(^ButtonBlock)(NSString *str);
 
 @interface ConverDetailTable : BaseTableView
 
 @property (nonatomic,strong)NSDictionary *dic;
+
+@property (nonatomic,copy)ButtonBlock block;
 
 @end
 

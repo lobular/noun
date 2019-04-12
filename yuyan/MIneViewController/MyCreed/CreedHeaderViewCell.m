@@ -8,7 +8,7 @@
 
 #import "CreedHeaderViewCell.h"
 
-static NSString *ID = @"cell";
+static NSString *ID = @"header";
 
 @implementation CreedHeaderViewCell
 

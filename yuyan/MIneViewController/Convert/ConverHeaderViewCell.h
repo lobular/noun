@@ -11,6 +11,7 @@
 
 @interface ConverHeaderViewCell : UITableViewCell
 
+@property (nonatomic,strong)UILabel *tip;
 
 + (instancetype)initWithTableView:(UITableView *)tableView;
 

@@ -11,11 +11,15 @@
 #import "KeyChain.h"
 #import "ConverDetailTable.h"
 #import <SVProgressHUD.h>
+#import "CustomWebViewController.h"
 
 @interface ConverDetailViewController ()
 
 @property (nonatomic,strong)NSDictionary *dic;
 @property (nonatomic,strong)ConverDetailTable *detailTable;
+@property (nonatomic,strong)ConverBtn *conver;
+
+@property (nonatomic,strong)UIButton *userBtn;
 
 @end
 
@@ -45,9 +49,6 @@
         [SVProgressHUD dismiss];
         if ([dataDic[@"status"] isEqualToString:@"success"]) {
             self.dic = dataDic[@"data"][@"record"];
-//            if ([self->_delegate respondsToSelector:@selector(setValue:)]) {
-//                [self->_delegate setValue:data];
-//            }
             [self createTable];
             [self.detailTable reloadData];
         }else{
@@ -66,6 +67,18 @@
     _detailTable.dic = self.dic;
     [_detailTable reloadData];
     [self.view addSubview:_detailTable];
+    WEAK_SELF(weakSelf);
+    _detailTable.block = ^(NSString *str) {
+        if ([str isEqualToString:@"0000"]) {
+            CustomWebViewController *web = [[CustomWebViewController alloc] init];
+            web.url = weakSelf.dic[@"h5_href"];
+            [weakSelf.navigationController pushViewController:web animated:YES];
+        }
+    };
 }
+
+
+
+
 
 @end

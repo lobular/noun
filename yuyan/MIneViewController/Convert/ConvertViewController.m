@@ -85,7 +85,7 @@
 
 - (void)createTableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight - NavigationHeight) style:UITableViewStylePlain];
     }
     [self.view addSubview:_tableView];
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;

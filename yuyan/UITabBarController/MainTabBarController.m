@@ -27,6 +27,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    [UITabBar appearance].translucent = NO;
     
     [self setupChildViewControllers];
     self.selectedIndex = 0;

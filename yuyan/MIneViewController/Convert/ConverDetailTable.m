@@ -25,6 +25,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self config];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -67,6 +68,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self config];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -91,7 +93,7 @@
 
 @implementation ConverBtn
 
-+ (instancetype)initWithTable:(UITableView *)table;{
++ (instancetype)initWithTable:(UITableView *)table{
     ConverBtn *cell = [table dequeueReusableCellWithIdentifier:@"sub"];
     if (!cell) {
         cell = [[ConverBtn alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sub"];
@@ -101,6 +103,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self config];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -114,7 +117,12 @@
         [_subBtn setTitleColor:[UIColor textColorWithType:0] forState:UIControlStateNormal];
         _subBtn.backgroundColor = [UIColor colorWithHexString:@"#FFE656"];
         [_subBtn setLayerCornerRadius:22];
-        
+        [_subBtn addTarget:self action:@selector(userAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+- (void)userAction{
+    if (_clickValue) {
+        self.clickValue(@"0000");
     }
 }
 
@@ -175,6 +183,13 @@
     }
     if (indexPath.section == 4) {
         ConverBtn *cell = [ConverBtn initWithTable:tableView];
+        
+        cell.clickValue = ^(NSString *isClick) {
+            if (self->_block) {
+                self->_block(isClick);
+            }
+        };
+        
         return cell;
     }
     ConverViewCell *cell = [ConverViewCell initWithTableView:tableView];

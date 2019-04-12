@@ -49,6 +49,9 @@
 
 #define WellAPI [NSString stringWithFormat:@"%@/v1/goods/index",URL]
 #define WellDetailAPI [NSString stringWithFormat:@"%@/v1/goods/detail",URL]
+#define ExchangeAPI [NSString stringWithFormat:@"%@/v1/user/exchange-goods",URL]
+
+#define questionAPI [NSString stringWithFormat:@"%@/v1/question",URL]
 
 #import <IQKeyboardManager.h>
 #import <WHC_AutoLayout.h>

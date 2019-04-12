@@ -13,6 +13,7 @@
 #import "ClassModel.h"
 #import "MineModel.h"
 #import "WellModel.h"
+#import "QuWeiModel.h"
 
 @implementation RequestFromNet
 
@@ -113,6 +114,17 @@
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
         NSDictionary *dics = responseObject[@"data"][@"goods"];
         NSDictionary *dic = @{@"data":dics,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        succ(dic);
+    } failure:^(NSError *error) {
+        fault(error);
+    }];
+}
+
+//获取答题列表
++ (void)getQuestionListForNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        NSArray *arr = [QuWeiModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"questions"]];
+        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);

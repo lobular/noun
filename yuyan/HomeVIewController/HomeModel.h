@@ -50,6 +50,7 @@
 @property (nonatomic,strong)NSString *thumb;
 @property (nonatomic,strong)NSString *title;
 @property (nonatomic,strong)NSArray *questions;
+@property (nonatomic,strong)NSString *creed_id;
 
 @end
 

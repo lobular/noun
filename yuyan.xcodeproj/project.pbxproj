@@ -32,6 +32,13 @@
 		832332D3225DCB8E001F0ED8 /* WellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332D2225DCB8E001F0ED8 /* WellHeaderView.m */; };
 		832332D6225DD5F1001F0ED8 /* WellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332D5225DD5F1001F0ED8 /* WellCollectionView.m */; };
 		832332D9225DE8F8001F0ED8 /* WellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332D8225DE8F8001F0ED8 /* WellModel.m */; };
+		832332DC225F16E8001F0ED8 /* ExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332DB225F16E8001F0ED8 /* ExchangeViewController.m */; };
+		832332DF225F18B5001F0ED8 /* ExchangeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332DE225F18B5001F0ED8 /* ExchangeTableView.m */; };
+		832332E222602920001F0ED8 /* CustomWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332E122602920001F0ED8 /* CustomWebViewController.m */; };
+		832332E522604820001F0ED8 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332E422604820001F0ED8 /* QuestionViewController.m */; };
+		832332E822604AAE001F0ED8 /* QuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332E722604AAE001F0ED8 /* QuestionView.m */; };
+		832332EB226061A3001F0ED8 /* QuWeiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332EA226061A3001F0ED8 /* QuWeiModel.m */; };
+		832332EE226067A1001F0ED8 /* QuestionAllView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332ED226067A1001F0ED8 /* QuestionAllView.m */; };
 		834E2202224B507D0022B6E8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2201224B507D0022B6E8 /* BaseViewController.m */; };
 		834E2205224B5E3E0022B6E8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2204224B5E3E0022B6E8 /* HomeViewController.m */; };
 		834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2207224B5F620022B6E8 /* ClassViewController.m */; };
@@ -141,6 +148,20 @@
 		832332D5225DD5F1001F0ED8 /* WellCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WellCollectionView.m; sourceTree = "<group>"; };
 		832332D7225DE8F8001F0ED8 /* WellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WellModel.h; sourceTree = "<group>"; };
 		832332D8225DE8F8001F0ED8 /* WellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WellModel.m; sourceTree = "<group>"; };
+		832332DA225F16E8001F0ED8 /* ExchangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeViewController.h; sourceTree = "<group>"; };
+		832332DB225F16E8001F0ED8 /* ExchangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeViewController.m; sourceTree = "<group>"; };
+		832332DD225F18B5001F0ED8 /* ExchangeTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeTableView.h; sourceTree = "<group>"; };
+		832332DE225F18B5001F0ED8 /* ExchangeTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeTableView.m; sourceTree = "<group>"; };
+		832332E022602920001F0ED8 /* CustomWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomWebViewController.h; sourceTree = "<group>"; };
+		832332E122602920001F0ED8 /* CustomWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomWebViewController.m; sourceTree = "<group>"; };
+		832332E322604820001F0ED8 /* QuestionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		832332E422604820001F0ED8 /* QuestionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		832332E622604AAE001F0ED8 /* QuestionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionView.h; sourceTree = "<group>"; };
+		832332E722604AAE001F0ED8 /* QuestionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionView.m; sourceTree = "<group>"; };
+		832332E9226061A3001F0ED8 /* QuWeiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuWeiModel.h; sourceTree = "<group>"; };
+		832332EA226061A3001F0ED8 /* QuWeiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuWeiModel.m; sourceTree = "<group>"; };
+		832332EC226067A1001F0ED8 /* QuestionAllView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionAllView.h; sourceTree = "<group>"; };
+		832332ED226067A1001F0ED8 /* QuestionAllView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionAllView.m; sourceTree = "<group>"; };
 		834E2200224B507D0022B6E8 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		834E2201224B507D0022B6E8 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		834E2203224B5E3E0022B6E8 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -486,6 +507,10 @@
 				832332D5225DD5F1001F0ED8 /* WellCollectionView.m */,
 				832332D7225DE8F8001F0ED8 /* WellModel.h */,
 				832332D8225DE8F8001F0ED8 /* WellModel.m */,
+				832332DA225F16E8001F0ED8 /* ExchangeViewController.h */,
+				832332DB225F16E8001F0ED8 /* ExchangeViewController.m */,
+				832332DD225F18B5001F0ED8 /* ExchangeTableView.h */,
+				832332DE225F18B5001F0ED8 /* ExchangeTableView.m */,
 			);
 			path = WellViewController;
 			sourceTree = "<group>";
@@ -528,6 +553,14 @@
 				834E229A225604B40022B6E8 /* HomeTypeViewController.m */,
 				8323328D225B1896001F0ED8 /* HomeDetailViewController.h */,
 				8323328E225B1896001F0ED8 /* HomeDetailViewController.m */,
+				832332E322604820001F0ED8 /* QuestionViewController.h */,
+				832332E422604820001F0ED8 /* QuestionViewController.m */,
+				832332E622604AAE001F0ED8 /* QuestionView.h */,
+				832332E722604AAE001F0ED8 /* QuestionView.m */,
+				832332EC226067A1001F0ED8 /* QuestionAllView.h */,
+				832332ED226067A1001F0ED8 /* QuestionAllView.m */,
+				832332E9226061A3001F0ED8 /* QuWeiModel.h */,
+				832332EA226061A3001F0ED8 /* QuWeiModel.m */,
 			);
 			path = HomeVIewController;
 			sourceTree = "<group>";
@@ -566,6 +599,8 @@
 				834E2210224B68F00022B6E8 /* BaseNavigationBar.m */,
 				834E2212224B72B90022B6E8 /* BaseTableView.h */,
 				834E2213224B72B90022B6E8 /* BaseTableView.m */,
+				832332E022602920001F0ED8 /* CustomWebViewController.h */,
+				832332E122602920001F0ED8 /* CustomWebViewController.m */,
 			);
 			name = UIView;
 			path = yuyan/Category/UIView;
@@ -784,15 +819,19 @@
 				834E2202224B507D0022B6E8 /* BaseViewController.m in Sources */,
 				834E228C2255E6BE0022B6E8 /* JDCategoryLeftTabelView.m in Sources */,
 				83A93AF4224B25DC00644BE2 /* UIColor+Category.m in Sources */,
+				832332E222602920001F0ED8 /* CustomWebViewController.m in Sources */,
 				834E228D2255E6BE0022B6E8 /* JDCategoryRightCollectionView.m in Sources */,
 				832332CD225DC006001F0ED8 /* SetViewController.m in Sources */,
 				834E229B225604B40022B6E8 /* HomeTypeViewController.m in Sources */,
+				832332DF225F18B5001F0ED8 /* ExchangeTableView.m in Sources */,
 				83233292225B346D001F0ED8 /* HomeHeaderViewCell.m in Sources */,
 				834E2214224B72B90022B6E8 /* BaseTableView.m in Sources */,
+				832332DC225F16E8001F0ED8 /* ExchangeViewController.m in Sources */,
 				834E225E2251BF570022B6E8 /* YSAnimatedDotView.m in Sources */,
 				83A93AE6224B21B100644BE2 /* Tools.m in Sources */,
 				83A93ADD224B181700644BE2 /* AppDelegate.m in Sources */,
 				834E226E225486F50022B6E8 /* HomeViewCell.m in Sources */,
+				832332EB226061A3001F0ED8 /* QuWeiModel.m in Sources */,
 				83A93B01224B433000644BE2 /* MainTabBarController.m in Sources */,
 				832332A2225C7A77001F0ED8 /* KeyChain.m in Sources */,
 				832332B3225C9638001F0ED8 /* MineModel.m in Sources */,
@@ -801,6 +840,7 @@
 				83A93AFE224B273800644BE2 /* ErrorView.m in Sources */,
 				832332D3225DCB8E001F0ED8 /* WellHeaderView.m in Sources */,
 				832332C6225DB7FD001F0ED8 /* IdeaBackViewController.m in Sources */,
+				832332E822604AAE001F0ED8 /* QuestionView.m in Sources */,
 				832332B0225C945A001F0ED8 /* ConvertViewController.m in Sources */,
 				834E22642251BF670022B6E8 /* YSBannerViewCell.m in Sources */,
 				83A93AED224B24CB00644BE2 /* RequestFromNet.m in Sources */,
@@ -832,8 +872,10 @@
 				834E22772255D3510022B6E8 /* ClassHeaderVIew.m in Sources */,
 				832332C9225DBA5A001F0ED8 /* IdeaBackView.m in Sources */,
 				832332D9225DE8F8001F0ED8 /* WellModel.m in Sources */,
+				832332E522604820001F0ED8 /* QuestionViewController.m in Sources */,
 				834E226B225456980022B6E8 /* HomeTypeVIew.m in Sources */,
 				834E228E2255E6BE0022B6E8 /* JDCategoryRightCollectionCell.m in Sources */,
+				832332EE226067A1001F0ED8 /* QuestionAllView.m in Sources */,
 				8323329E225C4ADE001F0ED8 /* RegisterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

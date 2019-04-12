@@ -23,14 +23,15 @@
     [[IQKeyboardManager sharedManager] setEnable:YES];
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:50.0];
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[MainTabBarController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     [[AFNetworkReachabilityManager manager] startMonitoring];
     return YES;
-    
-    return YES;
+
 }
 
 

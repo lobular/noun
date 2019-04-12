@@ -13,6 +13,8 @@
 #import "HomeModel.h"
 #import "UIView+CornerRadiusLayer.h"
 #import "Tools.h"
+#import "ExchangeViewController.h"
+#import "QuestionViewController.h"
 
 @interface HomeDetailViewController ()
 
@@ -173,7 +175,14 @@
         _btn.backgroundColor = [UIColor colorWithHexString:@"#FFE656"];
         if ([self.fromWhich isEqualToString:@"well"]) {
             _btn.tag = 10000;
+            if ([self.dataDic[@"creed_price"] integerValue] > [self.dataDic[@"num"] integerValue]) {
+                _btn.backgroundColor = [UIColor colorWithHexString:@"#f1f3f5"];
+//                _btn.userInteractionEnabled = NO;
+            }else{
+                _btn.userInteractionEnabled = YES;
+            }
             [_btn setTitle:@"马上兑换" forState:UIControlStateNormal];
+            [_btn addTarget:self action:@selector(exchangeAction:) forControlEvents:UIControlEventTouchUpInside];
         }else{
             _btn.tag = 10001;
             [_btn setTitle:@"答题赢信条" forState:UIControlStateNormal];
@@ -181,7 +190,30 @@
         [_btn setTitleColor:[UIColor textColorWithType:0] forState:UIControlStateNormal];
         _btn.titleLabel.font = FontSize(16);
         [_btn setLayerCornerRadius:22];
+        [_btn addTarget:self action:@selector(exchangeAction:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
+
+#pragma mark 兑换奖品/答题赢信条
+- (void)exchangeAction:(UIButton *)btn{
+    if (btn.tag == 10000) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"确定使用%@信条兑换",self.dataDic[@"creed_price"]] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是的" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            ExchangeViewController *exchange = [[ExchangeViewController alloc] init];
+            exchange.good_id = self.good_id;
+            [self.navigationController pushViewController:exchange animated:YES];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    }else if(btn.tag == 10001){
+        QuestionViewController *question = [[QuestionViewController alloc] init];
+        question.creed_id = self.model.creed_id;
+        [self.navigationController pushViewController:question animated:YES];
+    }
+}
+
 
 @end

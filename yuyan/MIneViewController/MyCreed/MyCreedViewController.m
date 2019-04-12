@@ -66,6 +66,7 @@
             [SVProgressHUD showErrorWithStatus:@"登录失效,请重新登录"];
             YuYanLoginViewController *login = [[YuYanLoginViewController alloc] init];
             [self presentViewController:login animated:YES completion:nil];
+
         }
         if ([dataDic[@"status"] isEqualToString:@"success"]) {
             self.arr = dataDic[@"data"];
@@ -91,12 +92,12 @@
 
 - (void)createTableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight -NavigationHeight) style:UITableViewStylePlain];
+        [self.view addSubview:_tableView];
+        _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
     }
-    [self.view addSubview:_tableView];
-    _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -112,8 +113,10 @@
         return cell;
     }
     CreedDetailViewCell *cell = [CreedDetailViewCell initWithTableView:tableView];
-    MineModel *model = self.arr[indexPath.row - 1];
-    [cell setValueForCell:model];
+    if (self.arr.count > 0) {
+        MineModel *model = self.arr[indexPath.row - 1];
+        [cell setValueForCell:model];
+    }
     return cell;
     
 }

@@ -51,9 +51,10 @@
             _name.text = @"兑换记录";
             _name.textColor = [UIColor textColorWithType:0];
         }else{
-            NSString *content = [NSString stringWithFormat:@"%@",[KeyChain objectWithKey:@"score"]];
+            NSString *str = [KeyChain objectWithKey:@"score"] ? [KeyChain objectWithKey:@"score"] : @"*";
+            NSString *content = [NSString stringWithFormat:@"%@",str];
             NSRange range = NSMakeRange(2,[content length]);
-          _name.attributedText =  [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"信条%@",[KeyChain objectWithKey:@"score"]]] fontSize:14 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
+          _name.attributedText =  [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"信条%@",str]] fontSize:14 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
         }
     }
 }

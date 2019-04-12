@@ -36,6 +36,19 @@
     return _arr;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadAction:) name:@"isLoad" object:nil];
+}
+
+#pragma mark
+- (void)reloadAction:(NSNotification *)noti{
+    if (noti.object) {
+        [self getData];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
    
@@ -62,40 +75,48 @@
     _headerView.which = ^(NSString *which) {
         if ([which isEqualToString:@"1"]) {
             ConvertViewController *conver = [[ConvertViewController alloc] init];
+            conver.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:conver animated:YES];
         }else if ([which isEqualToString:@"0"]) {
             MyCreedViewController *conver = [[MyCreedViewController alloc] init];
+            conver.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:conver animated:YES];
         }
     };
 }
 
 - (void)getData{
-    [SVProgressHUD showWithStatus:@"加载中..."];
-    [RequestFromNet getWellFromNet:WellAPI params:@{@"token":[KeyChain objectWithKey:@"token"]} succ:^(NSDictionary *dataDic) {
-        [SVProgressHUD dismiss];
-        if ([[NSString stringWithFormat:@"%@",dataDic[@"errcode"]] isEqualToString:@"1"]) {
-            [SVProgressHUD showErrorWithStatus:@"登录失效,请重新登录"];
-            YuYanLoginViewController *login = [[YuYanLoginViewController alloc] init];
-            [self presentViewController:login animated:YES completion:nil];
-        }
-        if ([dataDic[@"status"] isEqualToString:@"success"]) {
-            self.arr = dataDic[@"data"];
-            if (self.arr.count == 0) {
-                [self.collectionView removeFromSuperview];
-                self.collectionView = nil;
-                [self createNone];
-            }else{
-                [self.none removeFromSuperview];
-                self.none = nil;
-                [self createCollection];
+    if ([[KeyChain objectWithKey:@"token"] length] == 0) {
+        [self.collectionView removeFromSuperview];
+        self.collectionView = nil;
+        [self createNone];
+    }else{
+        [SVProgressHUD showWithStatus:@"加载中..."];
+        [RequestFromNet getWellFromNet:WellAPI params:@{@"token":[KeyChain objectWithKey:@"token"]} succ:^(NSDictionary *dataDic) {
+            [SVProgressHUD dismiss];
+            if ([[NSString stringWithFormat:@"%@",dataDic[@"errcode"]] isEqualToString:@"1"]) {
+                [SVProgressHUD showErrorWithStatus:@"登录失效,请重新登录"];
+                YuYanLoginViewController *login = [[YuYanLoginViewController alloc] init];
+                [self presentViewController:login animated:YES completion:nil];
             }
-            [self.collectionView reloadData];
-        }
-    } fault:^(NSError *error) {
-        [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
-    }];
+            if ([dataDic[@"status"] isEqualToString:@"success"]) {
+                self.arr = dataDic[@"data"];
+                if (self.arr.count == 0) {
+                    [self.collectionView removeFromSuperview];
+                    self.collectionView = nil;
+                    [self createNone];
+                }else{
+                    [self.none removeFromSuperview];
+                    self.none = nil;
+                    [self createCollection];
+                }
+                [self.collectionView reloadData];
+            }
+        } fault:^(NSError *error) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
+        }];
+    }
 }
 - (void)createNone{
     if (!_none) {

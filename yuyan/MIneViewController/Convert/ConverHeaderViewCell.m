@@ -13,7 +13,7 @@ static NSString *ID = @"header";
 @interface ConverHeaderViewCell ()
 
 @property (nonatomic,strong)UIImageView *image;
-@property (nonatomic,strong)UILabel *tip;
+
 
 @end
 
@@ -30,6 +30,7 @@ static NSString *ID = @"header";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self config];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
