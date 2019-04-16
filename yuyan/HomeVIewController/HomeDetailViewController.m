@@ -216,9 +216,13 @@
          }
         
     }else if(btn.tag == 10001){
-        QuestionViewController *question = [[QuestionViewController alloc] init];
-        question.creed_id = self.model.creed_id;
-        [self.navigationController pushViewController:question animated:YES];
+         if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"isLogin"] isEqualToString:@"YES"]) {
+            QuestionViewController *question = [[QuestionViewController alloc] init];
+            question.creed_id = self.model.creed_id;
+            [self.navigationController pushViewController:question animated:YES];
+         }else{
+             [SVProgressHUD showErrorWithStatus:@"登录后才可以答题哦"];
+         }
     }
 }
 

@@ -75,6 +75,25 @@
             [_code setLayerCornerRadius:2 borderWidth:1 borderColor:[UIColor colorWithHexString:@"#FD6D08"]];
             _code.userInteractionEnabled = YES;
         }
+        if (i == 2) {
+            if (!_tips) {
+                _tips = [UILabel new];
+                [self addSubview:_tips];
+                _tips.whc_LeftSpace(24).whc_TopSpaceToView(5, _line);
+                _tips.text = @"阅读并同意雨燕";
+                _tips.textColor = [UIColor colorWithHexString:@"#333333"];
+                _tips.font = [UIFont systemFontOfSize:13];
+            }
+            if (!_url) {
+                _url = [UILabel new];
+                [self addSubview:_url];
+                _url.whc_LeftSpaceToView(0, _tips).whc_TopSpaceToView(5, _line);
+                _url.textColor = [UIColor colorWithHexString:@"#EB4B2B"];
+                _url.text = @"注册相关协议";
+                _url.userInteractionEnabled = YES;
+                _url.font = [UIFont systemFontOfSize:13];
+            }
+        }
     }
     if (!_registerBtn) {
         _registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];

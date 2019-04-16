@@ -13,7 +13,7 @@
 @interface CustomWebViewController ()<WKUIDelegate,WKNavigationDelegate>
 
 @property (nonatomic,strong)WKWebView *wkWebView;
-@property (nonatomic, strong) WKWebViewConfiguration *wkConfig;
+@property (nonatomic, strong)WKWebViewConfiguration *wkConfig;
 @property (nonatomic,strong)UIProgressView *progressView;
 
 @end
@@ -31,7 +31,11 @@
 
 - (WKWebView *)wkWebView {
     if (!_wkWebView) {
+        if ([self.fromWhich isEqualToString:@"register"]) {
+            _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth, ScreenHeight - NavigationHeight) configuration:self.wkConfig];
+        }else{
             _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth, ScreenHeight + 10) configuration:self.wkConfig];
+        }
         _wkWebView.navigationDelegate = self;
         _wkWebView.UIDelegate = self;
         _wkWebView.backgroundColor = [UIColor whiteColor];
@@ -70,7 +74,11 @@
     [self startLoad:self.url];
 }
 - (void)leftBtnAcion:(id)sender;{
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self.fromWhich isEqualToString:@"register"]) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)setupToolView {

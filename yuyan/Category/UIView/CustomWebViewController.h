@@ -13,5 +13,7 @@
 
 @property (nonatomic,strong)NSString *url;
 
+@property (nonatomic,strong)NSString *fromWhich;
+
 @end
 

@@ -26,6 +26,12 @@
 @property (nonatomic,strong)UILabel *tip;
 @property (nonatomic,strong)UILabel *num;
 
+
+@property (nonatomic,strong)UILabel *tips;
+@property (nonatomic,strong)UILabel *url;
+
+
+
 @property (nonatomic,weak)id<RegisterDelegate>delegate;
 
 @end

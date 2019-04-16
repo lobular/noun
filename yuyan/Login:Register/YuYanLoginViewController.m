@@ -16,6 +16,7 @@
 #import "KeyChain.h"
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
+#import "CustomWebViewController.h"
 
 @interface YuYanLoginViewController ()<RegisterDelegate>
 {
@@ -73,6 +74,7 @@
 
 - (void)statusAction:(UITapGestureRecognizer *)tap{
     if (tap.view.tag == 10000) {
+        _loginView.secImage.whc_Width(19).whc_Height(11);
         _loginView.secImage.image = [UIImage imageNamed:@"open_press_icon"];
         _loginView.context.secureTextEntry = NO;
         tap.view.tag = 10001;
@@ -133,6 +135,7 @@
          [_registerView.tip addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loginAction)]];
     }
     [_registerView.code addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(codeAction)]];
+     [_registerView.url addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(urlAction)]];
 }
 
 - (void)sendValue:(NSString *)phone{
@@ -177,6 +180,14 @@
             [SVProgressHUD dismiss];
             [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
         }];
+}
+
+- (void)urlAction{
+    CustomWebViewController *custom = [[CustomWebViewController alloc] init];
+    custom.url = @"http://protocol.yuyanxt.com/shuziqihuotong.html";
+    custom.fromWhich = @"register";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:custom];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)dealloc{
