@@ -40,6 +40,7 @@
 		832332EB226061A3001F0ED8 /* QuWeiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332EA226061A3001F0ED8 /* QuWeiModel.m */; };
 		832332EE226067A1001F0ED8 /* QuestionAllView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332ED226067A1001F0ED8 /* QuestionAllView.m */; };
 		832332F2226452C7001F0ED8 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332F1226452C7001F0ED8 /* WebViewController.m */; };
+		832332F52265B60C001F0ED8 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332F42265B60C001F0ED8 /* ForgetViewController.m */; };
 		834E2202224B507D0022B6E8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2201224B507D0022B6E8 /* BaseViewController.m */; };
 		834E2205224B5E3E0022B6E8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2204224B5E3E0022B6E8 /* HomeViewController.m */; };
 		834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2207224B5F620022B6E8 /* ClassViewController.m */; };
@@ -166,6 +167,8 @@
 		832332EF22644F75001F0ED8 /* yuyan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = yuyan.entitlements; sourceTree = "<group>"; };
 		832332F0226452C7001F0ED8 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		832332F1226452C7001F0ED8 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		832332F32265B60C001F0ED8 /* ForgetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
+		832332F42265B60C001F0ED8 /* ForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
 		834E2200224B507D0022B6E8 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		834E2201224B507D0022B6E8 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		834E2203224B5E3E0022B6E8 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -467,6 +470,8 @@
 				8323329A225B5042001F0ED8 /* LoginView.m */,
 				8323329C225C4ADE001F0ED8 /* RegisterView.h */,
 				8323329D225C4ADE001F0ED8 /* RegisterView.m */,
+				832332F32265B60C001F0ED8 /* ForgetViewController.h */,
+				832332F42265B60C001F0ED8 /* ForgetViewController.m */,
 			);
 			path = "Login:Register";
 			sourceTree = "<group>";
@@ -862,6 +867,7 @@
 				83233295225B4181001F0ED8 /* HomeCustomViewCell.m in Sources */,
 				834E22652251BF670022B6E8 /* YSBannerView.m in Sources */,
 				834E228F2255E6BE0022B6E8 /* JDCategoryLeftTableCell.m in Sources */,
+				832332F52265B60C001F0ED8 /* ForgetViewController.m in Sources */,
 				8323328C225AF298001F0ED8 /* SearchViewController.m in Sources */,
 				832332B6225C9AE4001F0ED8 /* ConverViewCell.m in Sources */,
 				834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */,

@@ -40,6 +40,8 @@
 
 #define LoginAPI [NSString stringWithFormat:@"%@/v1/login",URL]
 #define CodeAPI  [NSString stringWithFormat:@"%@/v1/register/vercode",URL]
+#define ForgetCodeAPI [NSString stringWithFormat:@"%@/v1/reset-password/vercode",URL]
+#define ResetPwdAPI [NSString stringWithFormat:@"%@/v1/reset-password",URL]
 #define RegisterAPI [NSString stringWithFormat:@"%@/v1/register",URL]
 
 #define ScoreAPI [NSString stringWithFormat:@"%@/v1/user/score-record",URL]

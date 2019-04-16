@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import "CustomWebViewController.h"
+#import "ForgetViewController.h"
 
 @interface YuYanLoginViewController ()<RegisterDelegate>
 {
@@ -64,6 +65,7 @@
         _loginView.secImage.tag = 10000;
         [_loginView.secImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(statusAction:)]];
         [_loginView.tip addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(registerAction)]];
+        [_loginView.forget addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forgetAction)]];
         [self setValue];
     }
 }
@@ -194,5 +196,11 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
+#pragma mark 忘记密码
+- (void)forgetAction{
+    ForgetViewController *forget = [[ForgetViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:forget];
+    [self presentViewController:nav animated:YES completion:nil];
+}
 
 @end

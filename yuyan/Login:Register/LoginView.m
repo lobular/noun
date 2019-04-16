@@ -68,6 +68,7 @@
         [self addSubview:_forget];
         _forget.whc_TopSpaceToView(13, _line).whc_RightSpace(16);
         _forget.text = @"忘记密码";
+        _forget.userInteractionEnabled = YES;
         _forget.textColor = [UIColor textColorWithType:1];
         _forget.font = FontSize(12);
     }

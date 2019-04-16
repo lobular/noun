@@ -30,9 +30,11 @@
 @property (nonatomic,strong)UILabel *tips;
 @property (nonatomic,strong)UILabel *url;
 
+@property (nonatomic,strong)NSString *fromWhich;
 
 
 @property (nonatomic,weak)id<RegisterDelegate>delegate;
+
 
 @end
 
