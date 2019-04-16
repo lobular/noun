@@ -7,6 +7,11 @@
 //
 
 #import "SearchViewController.h"
+#import "RequestFromNet.h"
+#import <SVProgressHUD.h>
+#import "YuYanLoginViewController.h"
+#import "HomeViewCell.h"
+#import "CreedNoneView.h"
 
 @interface HeaderView : UIView
 
@@ -59,62 +64,29 @@
 
 @end
 
-@interface cell : UITableViewCell
 
-@property (nonatomic,strong)UILabel *text;
-@property (nonatomic,strong)UILabel *line;
-
-+ (instancetype)initWithTable:(UITableView *)table;
-
-@end
-
-static NSString *ID = @"cell";
-@implementation cell
-
-+ (instancetype)initWithTable:(UITableView *)table{
-    cell *cells = [table dequeueReusableCellWithIdentifier:ID];
-    if (!cells) {
-        cells = [[cell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
-    return cells;
-}
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self config];
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    return self;
-}
-
-- (void)config{
-    if (!_text) {
-        _text = [UILabel new];
-        _text.textColor = [UIColor colorWithHexString:@"#333333"];
-        _text.font = FontSize(15);
-        _text.text = @"787878";
-        [self.contentView addSubview:_text];
-        _text.whc_CenterY(0).whc_LeftSpace(16);
-    }
-    if (!_line) {
-        _line = [UILabel new];
-        _line.textColor = [UIColor colorWithHexString:@"#f1f3f5"];
-        [self.contentView addSubview:_line];
-        _line.whc_BottomSpace(0).whc_LeftSpace(16).whc_RightSpace(0).whc_Height(0.5);
-    }
-}
-
-@end
 
 @interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+{
+    NSString *value;
+}
 
 @property (nonatomic,strong)HeaderView *header;
 @property (nonatomic,strong)UITableView *tableView;
-@property (nonatomic,strong)cell *cells;
+@property (nonatomic,strong)NSArray *dataArr;
+@property (nonatomic,strong)CreedNoneView *noneView;
+
 
 @end
 
 @implementation SearchViewController
+
+- (NSArray *)dataArr{
+    if (!_dataArr) {
+        _dataArr = [NSArray array];
+    }
+    return _dataArr;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -131,6 +103,7 @@ static NSString *ID = @"cell";
     }
     _header.text.delegate = self;
     _header.tipBtn.tag = 10000 + 1;
+    [_header.text addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [_header.tipBtn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
      [_header.returnBtn addTarget:self action:@selector(clickLeftBtn) forControlEvents:UIControlEventTouchUpInside];
     
@@ -138,6 +111,12 @@ static NSString *ID = @"cell";
 
 - (void)clickLeftBtn{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)createNone{
+    if (!_noneView) {
+        self.noneView = [[CreedNoneView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight - NavigationHeight)];
+    }
+    [self.view addSubview:_noneView];
 }
 
 - (void)createTableView{
@@ -153,29 +132,63 @@ static NSString *ID = @"cell";
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-   return [cell initWithTable:tableView];
+    HomeViewCell *cell = [HomeViewCell cellWithTableView:tableView];
+    if (self.dataArr.count > 0) {
+        HomeModel *model = self.dataArr[indexPath.row ];
+        [cell setValueForCell:model];
+    }
+   return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.dataArr.count ;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+    return  90;
 }
 
 #pragma mark
 - (void)search:(UIButton *)btn{
     if (btn.tag - 10000 == 1) {
-        [_header.tipBtn setTitle:@"取消" forState:UIControlStateNormal];
-        _header.tipBtn.tag = 10000 + 2;
+        [self.navigationController popViewControllerAnimated:YES];
     }else{
         [_header.tipBtn setTitle:@"搜索" forState:UIControlStateNormal];
-        _header.tipBtn.tag = 10000 + 1;
+        [SVProgressHUD show];
+        [RequestFromNet getSearchListForNet:SearchAPI params:@{@"q":value}succ:^(NSDictionary *dataDic) {
+            [SVProgressHUD dismiss];
+            if ([[NSString stringWithFormat:@"%@",dataDic[@"errcode"]] isEqualToString:@"1"]) {
+                YuYanLoginViewController *login = [[YuYanLoginViewController alloc] init];
+                [self.navigationController presentViewController:login animated:YES completion:nil];
+            }else{
+                if ([dataDic[@"status"] isEqualToString:@"success"]) {
+                     self.dataArr = dataDic[@"data"];
+                    if (self.dataArr.count == 0) {
+                        [self.tableView removeFromSuperview];
+                        self.tableView = nil;
+                        [self createNone];
+                    }else{
+                        [self createTableView];
+                    }
+                    [self.tableView reloadData];
+                }else{
+                    [SVProgressHUD dismiss];
+                    [SVProgressHUD showErrorWithStatus:dataDic[@"message"]];
+                }
+            }
+        } fault:^(NSError *error) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
+        }];
     }
 }
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    [_header.tipBtn setTitle:@"取消" forState:UIControlStateNormal];
-    _header.tipBtn.tag = 10000 + 2;
-    
+- (void)textFieldDidChange:(UITextField *)text{
+    if ([text.text length] > 0) {
+        value = text.text;
+        [_header.tipBtn setTitle:@"搜索" forState:UIControlStateNormal];
+        _header.tipBtn.tag = 10000 + 2;
+    }else{
+         [_header.tipBtn setTitle:@"取消" forState:UIControlStateNormal];
+         _header.tipBtn.tag = 10000 + 1;
+    }
 }
 
 @end

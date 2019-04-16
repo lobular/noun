@@ -73,11 +73,11 @@
 
 - (void)statusAction:(UITapGestureRecognizer *)tap{
     if (tap.view.tag == 10000) {
-        _loginView.secImage.backgroundColor = [UIColor greenColor];
+        _loginView.secImage.image = [UIImage imageNamed:@"open_press_icon"];
         _loginView.context.secureTextEntry = NO;
         tap.view.tag = 10001;
     }else{
-        _loginView.secImage.backgroundColor = [UIColor redColor];
+        _loginView.secImage.image = [UIImage imageNamed:@"close_press_icon"];
         tap.view.tag = 10000;
         _loginView.context.secureTextEntry = YES;
     }
@@ -89,7 +89,6 @@
     self.loginView.dic = ^(NSDictionary *dataDic) {
         [SVProgressHUD showWithStatus:@"正在登录中..."];
         [RequestFromNet getDataForCustom:LoginAPI params:@{@"username":dataDic[@"phone"],@"password":dataDic[@"pwd"]} succ:^(NSDictionary *dataDic) {
-            NSLog(@"%@",dataDic);
             [SVProgressHUD dismiss];
             if ([dataDic[@"status"]isEqualToString:@"success"]) {
                 [KeyChain saveObject:dataDic[@"data"][@"user"][@"token"] Forkey:@"token" ToKeyChainStore:NO];

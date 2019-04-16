@@ -42,5 +42,11 @@ typedef void (^Fault)(NSError *error);
 //获取答题列表
 + (void)getQuestionListForNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
 
+//搜索
++ (void)getSearchListForNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+
+//消息列表
++ (void)getMessageListFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;
+
 @end
 

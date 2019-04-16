@@ -7,6 +7,7 @@
 //
 
 #import "Tools.h"
+#import "ErrorView.h"
 
 @implementation Tools
 
@@ -69,6 +70,24 @@
     [text addAttribute:NSForegroundColorAttributeName value:color range:rang];
     // 为label添加Attributed
     return text;
+}
+
++ (UIAlertController *)returnAlert;{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示"
+                                                                             message:@"您没有联网,请检查下网络"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //        NSURL *url = [NSURL URLWithString:@"prefs:root=General"];
+        //        if ([[UIApplication sharedApplication] canOpenURL:url])
+        //        {
+        //            [[UIApplication sharedApplication] openURL:url];
+        //        }else{
+        //            NSLog(@"can not open");
+        //        }
+    }];
+    
+    [alertController addAction:okAction];
+    return alertController;
 }
 
 @end

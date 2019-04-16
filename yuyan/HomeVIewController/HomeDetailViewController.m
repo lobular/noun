@@ -15,6 +15,7 @@
 #import "Tools.h"
 #import "ExchangeViewController.h"
 #import "QuestionViewController.h"
+#import "KeyChain.h"
 
 @interface HomeDetailViewController ()
 
@@ -162,7 +163,7 @@
         _num.textColor = [UIColor textColorWithType:0];
         if ([self.fromWhich isEqualToString:@"well"]) {
             NSRange range = NSMakeRange(2, [self.dataDic[@"num"] length]);
-           _num.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"还剩%@信条",self.dataDic[@"num"]]] fontSize:13 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
+           _num.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"还剩%@个",self.dataDic[@"num"]]] fontSize:13 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
         }else{
             NSRange range = NSMakeRange(2, [self.model.creed_remain length]);
         _num.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"还剩%@信条",self.model.creed_remain]] fontSize:13 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
@@ -175,9 +176,8 @@
         _btn.backgroundColor = [UIColor colorWithHexString:@"#FFE656"];
         if ([self.fromWhich isEqualToString:@"well"]) {
             _btn.tag = 10000;
-            if ([self.dataDic[@"creed_price"] integerValue] > [self.dataDic[@"num"] integerValue]) {
+            if ([self.dataDic[@"creed_price"] integerValue] > [[KeyChain objectWithKey:@"score"] integerValue]) {
                 _btn.backgroundColor = [UIColor colorWithHexString:@"#f1f3f5"];
-//                _btn.userInteractionEnabled = NO;
             }else{
                 _btn.userInteractionEnabled = YES;
             }
@@ -197,7 +197,7 @@
 #pragma mark 兑换奖品/答题赢信条
 - (void)exchangeAction:(UIButton *)btn{
     if (btn.tag == 10000) {
-         if ([self.dataDic[@"creed_price"] integerValue] > [self.dataDic[@"num"] integerValue]) {
+         if ([self.dataDic[@"creed_price"] integerValue] > [[KeyChain objectWithKey:@"score"] integerValue]) {
              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前信条数不够" preferredStyle:UIAlertControllerStyleAlert];
              UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
              [alertController addAction:cancelAction];

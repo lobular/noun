@@ -55,6 +55,8 @@
         if ([dataDic[@"status"] isEqualToString:@"success"]) {
             self.dataDic = dataDic;
             [self createTable];
+            [KeyChain saveObject:self.dataDic[@"data"][@"score"] Forkey:@"score" ToKeyChainStore:NO];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"score" object:@"score"]; //剩余信条数
             [self.tableView reloadData];
         }
     } fault:^(NSError *error) {

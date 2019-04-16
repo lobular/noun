@@ -51,7 +51,7 @@ static NSString *ID = @"header";
         _headerImage = [UIImageView new];
         [self.contentView addSubview:_headerImage];
         _headerImage.whc_CenterY(0).whc_RightSpace(16).whc_Width(58).whc_Height(58);
-        _headerImage.backgroundColor = [UIColor lightGrayColor];
+        _headerImage.image = [UIImage imageNamed:@"mine_icon1"];
     }
 }
 

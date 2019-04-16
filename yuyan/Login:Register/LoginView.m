@@ -59,7 +59,7 @@
             [self addSubview:_secImage];
             _secImage.whc_CenterYToView(0, _context).whc_RightSpace(16).whc_Width(19).whc_Height(8);
 //            _secImage.image = [UIImage imageNamed:@""];
-            _secImage.backgroundColor = [UIColor redColor];
+            _secImage.image = [UIImage imageNamed:@"close_press_icon"];
             _secImage.userInteractionEnabled = YES;
         }
     }

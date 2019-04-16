@@ -22,7 +22,7 @@
         self.city = [UILabel new];
         [self addSubview:self.city];
         _city.userInteractionEnabled = YES;
-        _city.whc_CenterY(0).whc_LeftSpace(16);
+        _city.whc_BottomSpace(27).whc_LeftSpace(16);
         _city.textColor = [UIColor colorWithHexString:@"#070707"];
         _city.text = @"全部";
         _city.font = FontSize(12);
@@ -31,20 +31,20 @@
         _tipImage = [UIImageView new];
         _tipImage.userInteractionEnabled = YES;
         [self addSubview:_tipImage];
-        _tipImage.whc_CenterY(0).whc_LeftSpaceToView(8, _city).whc_Width(7).whc_Height(4);
+        _tipImage.whc_CenterYToView(0, _city).whc_LeftSpaceToView(8, _city).whc_Width(7).whc_Height(4);
         _tipImage.image = [UIImage imageNamed:@"systen-Triangle_press_icon"];
     }
     if (!_title) {
         _title = [UILabel new];
         [self addSubview:_title];
-        _title.whc_CenterY(0).whc_CenterX(0);
+        _title.whc_BottomSpace(20).whc_CenterX(0);
         _title.textColor = [UIColor textColorWithType:0];
         _title.text = @"雨燕信条";
     }
     if (!_newsImage) {
         _newsImage = [UIImageView new];
         [self addSubview:_newsImage];
-        _newsImage.whc_CenterY(0).whc_RightSpace(16)
+        _newsImage.whc_BottomSpace(27).whc_RightSpace(16)
         .whc_Width(18).whc_Height(16);
         _newsImage.image = [UIImage imageNamed:@"new_icon"];
         
@@ -53,7 +53,7 @@
         _searchImage = [UIImageView new];
         _searchImage.userInteractionEnabled = YES;
         [self addSubview:_searchImage];
-        _searchImage.whc_CenterY(0).whc_RightSpaceToView(20, _newsImage).whc_CenterY(0).whc_Width(17).whc_Height(17);
+        _searchImage.whc_BottomSpace(27).whc_RightSpaceToView(20, _newsImage).whc_Width(17).whc_Height(17);
         _searchImage.image = [UIImage imageNamed:@"system-serchb_press_icon"];
     }
 }

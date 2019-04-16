@@ -35,3 +35,7 @@
 @implementation isRightModel
 
 @end
+
+@implementation messageModel
+
+@end

@@ -122,6 +122,16 @@
         _allView = [[QuestionAllView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight - NavigationHeight)];
     }
     if (rightNum == self.dataArr.count) {
+        [SVProgressHUD show];
+        [RequestFromNet getDataForCustom:AnswerSuccAPI params:@{@"token":[KeyChain objectWithKey:@"token"],@"creed_id":self.creed_id} succ:^(NSDictionary *dataDic) {
+            [SVProgressHUD dismiss];
+            NSDictionary *dic = @{@"score":dataDic[@"data"][@"score"]};
+            NSArray *arr = @[dic];
+            [self->_allView config:arr];
+        } fault:^(NSError *error) {
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
+        }];
         _allView.tip.image = [UIImage imageNamed:@"exchange_success_icon"];
         _allView.tipLabel.text = @"恭喜您,答题成功";
     }else{

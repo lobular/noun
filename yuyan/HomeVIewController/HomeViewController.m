@@ -46,11 +46,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self createHeader];
-    [self createBanner];
-    [self createTable];
-    [self prepareData:nil];
+    if (self.is_valid) {
+        self.view.backgroundColor = [UIColor redColor];
+//        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Splash screen"]];
+    }else{
+        [self createHeader];
+        [self createBanner];
+        [self createTable];
+        [self prepareData:nil];
+    }
 
  
 }
@@ -201,7 +205,7 @@
 }
 #pragma mark 选择城市代理
 - (void)sendValueToHome:(NSDictionary *)dic{
-    NSLog(@"%@",dic);
+    NSLog(@"======%@",dic);
     _headerView.city.text = dic[@"city_name"];
     [self prepareData:@{@"city_id":dic[@"city_id"]}];
 }

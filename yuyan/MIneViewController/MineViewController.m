@@ -28,6 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadAction:) name:@"isLoad" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadAction:) name:@"score" object:nil]; //剩余信条数
 }
 
 #pragma mark
@@ -36,6 +37,7 @@
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     }
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -22,6 +22,8 @@
 
 @property (strong,nonatomic)UIButton * rightBtn;
 
+@property (nonatomic, strong) UIView *bottomview;
+
 - (id)initWithFrame:(CGRect)frame withTitle:(NSString *)title withLeftBtnHidden:(BOOL)l_hidden withRightBtnHidden:(BOOL)r_hidden;
 
 - (void)setLeftButtonTitle:(NSString *)title;

@@ -12,12 +12,16 @@
 
 @interface Tools : NSObject
 
+
 #pragma mark 获取当前视图
 + (UIViewController *)getCurrentViewController;
 
 + (void)startWithTime:(NSInteger)timeLine label:(UILabel *)label title:(NSString *)title countDownTitle:(NSString *)subTitle mainColor:(UIColor *)mColor countColor:(UIColor *)color;
 
 + (NSAttributedString *)text:(NSMutableAttributedString *)text fontSize:(CGFloat)fontSize color:(UIColor *)color rang:(NSRange)rang;
+
++ (UIAlertController *)returnAlert;
+
 
 @end
 

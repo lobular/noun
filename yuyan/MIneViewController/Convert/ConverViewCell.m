@@ -49,8 +49,8 @@ static NSString *ID = @"cell";
     if (!_tip) {
         _tip = [UIImageView new];
         [self.contentView addSubview:_tip];
-        _tip.whc_LeftSpaceToView(10, _image).whc_TopSpaceToView(10, _name).whc_Width(12).whc_Height(14);
-        _tip.image = [UIImage imageNamed:@"map_icon"];
+        _tip.whc_LeftSpaceToView(10, _image).whc_TopSpaceToView(10, _name).whc_Width(14).whc_Height(14);
+        _tip.image = [UIImage imageNamed:@"time_icon"];
     }
     if (!_time) {
         _time = [UILabel new];

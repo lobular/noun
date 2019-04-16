@@ -16,6 +16,10 @@
 #import <UIImageView+WebCache.h>
 #import "CreedNoneView.h"
 #import "YuYanLoginViewController.h"
+#import "ErrorView.h"
+#import <AFNetworking.h>
+#import "NetWorkSingle.h"
+#import "Tools.h"
 
 @interface ConvertViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,6 +27,7 @@
 @property (nonatomic,strong)NSArray *arr;
 
 @property (nonatomic,strong)CreedNoneView *noneView;
+@property (nonatomic,strong)ErrorView *err;
 
 @end
 
@@ -35,20 +40,33 @@
     return _arr;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     [self setNavigationTitle:@"兑换记录" LeftBtnHidden:NO RightBtnHidden:YES];
-    [self getData];
+    [self getData:nil];
     
+}
+
+- (void)notifi:(NSNotification *)noti{
+    [self getData:@"load"];
 }
 
 - (void)leftBtnAcion:(id)sender;{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)getData{
-    [SVProgressHUD showWithStatus:@"正在努力加载中..."];
+- (void)getData:(NSString *)status{
+    if (![status isEqualToString:@"load"]) {
+        [SVProgressHUD showWithStatus:@"正在努力加载中..."];
+    }else{
+        [SVProgressHUD show];
+    }
     [RequestFromNet getRecordForGoods:RecordAPI params:@{@"token":[KeyChain objectWithKey:@"token"]} succ:^(NSDictionary *dataDic) {
         [SVProgressHUD dismiss];
         if ([[NSString stringWithFormat:@"%@",dataDic[@"errcode"]] isEqualToString:@"1"]) {
@@ -73,7 +91,15 @@
         }
     } fault:^(NSError *error) {
         [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
+        [self presentViewController:[Tools returnAlert] animated:YES completion:nil];
+        if (self.arr.count > 0) {
+            self.err = nil;
+            [self.err removeFromSuperview];
+        }else if (!self.noneView){
+            [self.tableView removeFromSuperview];
+            self.tableView = nil;
+            [self createError];
+        }
     }];
 }
 - (void)createNone{
@@ -81,6 +107,18 @@
         self.noneView = [[CreedNoneView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight - NavigationHeight)];
     }
     [self.view addSubview:_noneView];
+}
+- (void)createError{
+    if (!_err) {
+        _err = [[ErrorView alloc] init];
+        [self.view addSubview:_err];
+        _err.frame = CGRectMake(0, NavigationHeight, ScreenWidth,ScreenHeight - self.tabBarController.tabBar.frame.size.height - NavigationHeight);
+        [_err addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loan)]];
+    }
+}
+- (void)loan{
+    [NetWorkSingle new];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
 }
 
 - (void)createTableView{

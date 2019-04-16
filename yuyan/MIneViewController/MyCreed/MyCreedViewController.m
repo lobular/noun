@@ -15,6 +15,10 @@
 #import "MineModel.h"
 #import "CreedNoneView.h"
 #import "YuYanLoginViewController.h"
+#import <AFNetworking.h>
+#import "ErrorView.h"
+#import "Tools.h"
+#import "NetWorkSingle.h"
 
 @interface MyCreedViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -25,6 +29,7 @@
 @property (nonatomic,strong)NSArray *arr;
 
 @property (nonatomic,strong)CreedNoneView *noneView;
+@property (nonatomic,strong)ErrorView *err;
 
 @end
 
@@ -37,15 +42,26 @@
     return _arr;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setNavigationTitle:@"我的信条" LeftBtnHidden:NO RightBtnHidden:YES];
     self.navigationBar.backgroundColor = [UIColor colorWithHexString:@"#FFE656"];
     
-    [self createTableView];
-    [self getData];
+    self.navigationBar.bottomview.backgroundColor = [UIColor clearColor];
     
+    [self createTableView];
+    [self getData:nil];
+    
+}
+
+- (void)notifi:(NSNotification *)noti{
+    [self getData:@"load"];
 }
 
 - (void)leftBtnAcion:(id)sender;{
@@ -57,9 +73,25 @@
     }
     [self.view addSubview:_noneView];
 }
+- (void)createError{
+    if (!_err) {
+        _err = [[ErrorView alloc] init];
+        [self.view addSubview:_err];
+        _err.frame = CGRectMake(0, NavigationHeight, ScreenWidth,ScreenHeight - self.tabBarController.tabBar.frame.size.height - NavigationHeight);
+        [_err addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loan)]];
+    }
+}
+- (void)loan{
+    [NetWorkSingle new];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+}
 
-- (void)getData{
-    [SVProgressHUD showWithStatus:@"正在努力加载中..."];
+- (void)getData:(NSString *)status{
+    if (![status isEqualToString:@"load"]) {
+        [SVProgressHUD showWithStatus:@"正在努力加载中..."];
+    }else{
+        [SVProgressHUD show];
+    }
     [RequestFromNet getListForCreed:ScoreAPI params:@{@"token":[KeyChain objectWithKey:@"token"]} succ:^(NSDictionary *dataDic) {
         [SVProgressHUD dismiss];
         if ([[NSString stringWithFormat:@"%@",dataDic[@"errcode"]] isEqualToString:@"1"]) {
@@ -86,9 +118,19 @@
         }
     } fault:^(NSError *error) {
         [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
+        [self presentViewController:[Tools returnAlert] animated:YES completion:nil];
+        if (self.arr.count > 0) {
+            self.err = nil;
+            [self.err removeFromSuperview];
+        }else if (!self.noneView){
+            [self.tableView removeFromSuperview];
+            self.tableView = nil;
+            [self createError];
+        }
     }];
 }
+
+
 
 - (void)createTableView{
     if (!_tableView) {

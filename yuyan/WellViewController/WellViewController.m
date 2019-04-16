@@ -17,6 +17,10 @@
 #import "MyCreedViewController.h"
 #import "ConvertViewController.h"
 #import "HomeDetailViewController.h"
+#import "ErrorView.h"
+#import <AFNetworking.h>
+#import "NetWorkSingle.h"
+#import "Tools.h"
 
 @interface WellViewController ()<WellDelegate>
 
@@ -24,6 +28,7 @@
 @property (nonatomic,strong)WellCollectionView *collectionView;
 @property (nonatomic,strong)NSArray *arr;
 @property (nonatomic,strong)CreedNoneView *none;
+@property (nonatomic,strong)ErrorView *err;
 
 @end
 
@@ -40,13 +45,20 @@
     [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadAction:) name:@"isLoad" object:nil];
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadAction:) name:@"score" object:nil]; //剩余信条数
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
 }
 
 #pragma mark
 - (void)reloadAction:(NSNotification *)noti{
     if (noti.object) {
-        [self getData];
+        [self getData:nil];
     }
+}
+//网络状态监听
+- (void)notifi:(NSNotification *)noti{
+    [self getData:@"load"];
 }
 
 - (void)viewDidLoad {
@@ -54,8 +66,7 @@
    
     [self setNavigationTitle:@"福利" LeftBtnHidden:YES RightBtnHidden:NO];
     
-    [self createHeader];
-    [self getData];
+    [self getData:nil];
 }
 
 - (void)rightBtnAcion:(id)sender;{
@@ -85,13 +96,17 @@
     };
 }
 
-- (void)getData{
+- (void)getData:(NSString *)status{
     if ([[KeyChain objectWithKey:@"token"] length] == 0) {
         [self.collectionView removeFromSuperview];
         self.collectionView = nil;
         [self createNone];
     }else{
-        [SVProgressHUD showWithStatus:@"加载中..."];
+        if (![status isEqualToString:@"load"]) {
+            [SVProgressHUD showWithStatus:@"正在努力加载中..."];
+        }else{
+            [SVProgressHUD show];
+        }
         [RequestFromNet getWellFromNet:WellAPI params:@{@"token":[KeyChain objectWithKey:@"token"]} succ:^(NSDictionary *dataDic) {
             [SVProgressHUD dismiss];
             if ([[NSString stringWithFormat:@"%@",dataDic[@"errcode"]] isEqualToString:@"1"]) {
@@ -100,6 +115,7 @@
                 [self presentViewController:login animated:YES completion:nil];
             }
             if ([dataDic[@"status"] isEqualToString:@"success"]) {
+                [KeyChain saveObject:dataDic[@"score"] Forkey:@"score" ToKeyChainStore:NO];
                 self.arr = dataDic[@"data"];
                 if (self.arr.count == 0) {
                     [self.collectionView removeFromSuperview];
@@ -108,13 +124,24 @@
                 }else{
                     [self.none removeFromSuperview];
                     self.none = nil;
+                    [self.headerView removeFromSuperview];
+                    self.headerView = nil;
+                    [self createHeader];
                     [self createCollection];
                 }
                 [self.collectionView reloadData];
             }
         } fault:^(NSError *error) {
             [SVProgressHUD dismiss];
-            [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
+            [self presentViewController:[Tools returnAlert] animated:YES completion:nil];
+            if (self.arr.count > 0) {
+                self.err = nil;
+                [self.err removeFromSuperview];
+            }else if (!self.none){
+                [self.collectionView removeFromSuperview];
+                self.collectionView = nil;
+                [self createError];
+            }
         }];
     }
 }
@@ -124,14 +151,26 @@
     }
     [self.view addSubview:_none];
 }
+- (void)createError{
+    if (!_err) {
+        _err = [[ErrorView alloc] init];
+        [self.view addSubview:_err];
+        _err.frame = CGRectMake(0, NavigationHeight, ScreenWidth,ScreenHeight - self.tabBarController.tabBar.frame.size.height - NavigationHeight);
+        [_err addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loan)]];
+    }
+}
+- (void)loan{
+    [NetWorkSingle new];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+}
 
 - (void)createCollection{
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.minimumLineSpacing = 10;
-    flowLayout.minimumInteritemSpacing = 10;
+    flowLayout.minimumLineSpacing = 9;
+    flowLayout.minimumInteritemSpacing = 9;
     flowLayout.itemSize = CGSizeMake(167 *ScaleWidth, 167 *ScaleWidth);
     
-    WellCollectionView *rightView = [[WellCollectionView alloc] initWithFrame:CGRectMake(16, NavigationHeight + 40 + 16, ScreenWidth - 32 , ScreenHeight - NavigationHeight - 40) collectionViewLayout:flowLayout];
+    WellCollectionView *rightView = [[WellCollectionView alloc] initWithFrame:CGRectMake(16 *ScaleWidth, NavigationHeight + 40 + 16, ScreenWidth - 32 , ScreenHeight - NavigationHeight - 40) collectionViewLayout:flowLayout];
     self.collectionView = rightView;
     rightView.pagingEnabled = YES;
     self.collectionView.arr = self.arr;

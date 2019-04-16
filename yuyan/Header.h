@@ -52,6 +52,14 @@
 #define ExchangeAPI [NSString stringWithFormat:@"%@/v1/user/exchange-goods",URL]
 
 #define questionAPI [NSString stringWithFormat:@"%@/v1/question",URL]
+#define AnswerSuccAPI [NSString stringWithFormat:@"%@/v1/question/success",URL]
+
+#define SearchAPI [NSString stringWithFormat:@"%@/v1/creed/search",URL]
+#define VersionAPI [NSString stringWithFormat:@"%@/v1/site/app-version",URL]
+#define ApnsAPI [NSString stringWithFormat:@"%@/v1/site/apns",URL]
+#define ApnsReadAPI [NSString stringWithFormat:@"%@/v1/site/apns-to-readed",URL]
+
+#define MessageAPI [NSString stringWithFormat:@"%@/v1/site/messages",URL]
 
 #import <IQKeyboardManager.h>
 #import <WHC_AutoLayout.h>

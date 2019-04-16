@@ -13,7 +13,6 @@
 
 @property (strong,nonatomic)UIButton * leftBtn;
 @property (strong,nonatomic)UILabel * titleLabel;
-@property (nonatomic, strong) UIView *bottomview;
 
 @end
 

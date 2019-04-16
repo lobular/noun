@@ -52,8 +52,14 @@
 //信条列表
 + (void)getDataForList:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(NSDictionary *dataDic) {
-        NSArray *creeds = [HomeModel mj_objectArrayWithKeyValuesArray:dataDic[@"data"][@"creeds"]];
-        NSDictionary *dic = @{@"list":creeds,@"status":dataDic[@"status"],@"message":dataDic[@"message"]};
+        NSArray *arr;
+        NSDictionary *dic;
+        if ([dataDic[@"data"] count] > 0) {
+           arr = [HomeModel mj_objectArrayWithKeyValuesArray:dataDic[@"data"][@"creeds"]];
+           dic = @{@"list":arr,@"status":dataDic[@"status"],@"message":dataDic[@"message"]};
+        }else{
+            dic = @{@"status":dataDic[@"status"],@"message":dataDic[@"message"],@"errcode":dataDic[@"errcode"]};
+        }
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);
@@ -62,6 +68,7 @@
 //信条详情
 + (void)getDetailForCreed:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault{
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        
         detailModel *model = [detailModel mj_objectWithKeyValues:responseObject[@"data"][@"creed"]];
         
         NSArray *arr = [questionModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"questions"]];
@@ -83,8 +90,14 @@
 //我的信条
 + (void)getListForCreed:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
-         NSArray *arr = [MineModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"datalist"]];
-        NSDictionary *dic = @{@"data":arr,@"score":responseObject[@"data"][@"score"],@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        NSArray *arr;
+        NSDictionary *dic;
+        if ([responseObject[@"data"] count] > 0) {
+            arr = [MineModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"datalist"]];
+            dic = @{@"data":arr,@"score":responseObject[@"data"][@"score"],@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        }else{
+            dic = @{@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        }
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);
@@ -93,8 +106,15 @@
 //兑换记录
 + (void)getRecordForGoods:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
-        NSArray *arr = [RecordModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"records"]];
-        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        NSArray *arr;
+        NSDictionary *dic;
+         if ([responseObject[@"data"] count] > 0) {
+             arr = [RecordModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"records"]];
+             dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+         }else{
+              dic = @{@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+         }
+        
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);
@@ -103,8 +123,14 @@
 //福利
 + (void)getWellFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
-        NSArray *arr = [WellModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"goods"]];
-        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        NSArray *arr;
+        NSDictionary *dic;
+        if ([responseObject[@"data"] count] > 0) {
+            arr = [WellModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"goods"]];
+            dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"],@"score":responseObject[@"data"][@"score"]};
+        }else{
+            dic = @{@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        }
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);
@@ -123,12 +149,49 @@
 //获取答题列表
 + (void)getQuestionListForNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
     [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
-        NSArray *arr = [QuWeiModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"questions"]];
-        NSDictionary *dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        NSArray *arr;
+        NSDictionary *dic;
+        if ([responseObject[@"data"] count] > 0) {
+            arr = [QuWeiModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"questions"]];
+            dic = @{@"data":arr,@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        }else{
+            dic = @{@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        }
         succ(dic);
     } failure:^(NSError *error) {
         fault(error);
     }];
 }
-
+//搜索
++ (void)getSearchListForNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        NSArray *arr;
+        NSDictionary *dic;
+        if ([responseObject[@"data"] count] > 0) {
+           arr = [HomeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"results"]];
+           dic = @{@"data":arr,@"message":responseObject[@"message"],@"status":responseObject[@"status"],@"errcode":responseObject[@"errcode"]};
+        }else{
+             dic = @{@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        }
+        succ (dic);
+    } failure:^(NSError *error) {
+        fault (error);
+    }];
+}
+//消息列表
++ (void)getMessageListFromNet:(NSString *)url params:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
+        NSArray *arr;
+        NSDictionary *dic;
+        if ([responseObject[@"data"] count] > 0) {
+           arr = [messageModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"messages"]];
+           dic = @{@"data":arr,@"message":responseObject[@"message"],@"status":responseObject[@"status"],@"errcode":responseObject[@"errcode"]};
+        }else{
+           dic = @{@"status":responseObject[@"status"],@"message":responseObject[@"message"],@"errcode":responseObject[@"errcode"]};
+        }
+        succ(dic);
+    } failure:^(NSError *error) {
+        fault(error);
+    }];
+}
 @end

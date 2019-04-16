@@ -14,6 +14,10 @@
 #import <SVProgressHUD.h>
 #import "SearchViewController.h"
 #import "HomeDetailViewController.h"
+#import "ErrorView.h"
+#import <AFNetworking.h>
+#import "NetWorkSingle.h"
+#import "Tools.h"
 
 @interface ClassViewController ()<UIScrollViewDelegate, UICollectionViewDelegate>
 
@@ -26,6 +30,7 @@
 
 @property (nonatomic,strong)NSArray *fatherArr;
 @property (nonatomic,strong)NSArray *childArr;
+@property (nonatomic,strong)ErrorView *err;
 
 @end
 
@@ -34,6 +39,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
 }
 
 - (NSArray *)fatherArr{
@@ -53,13 +59,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNav];
-    [self getData];
+    [self getData:nil];
     
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"#f1f3f5"];
+    
+    
 }
 
-- (void)getData{
+- (void)notifi:(NSNotification *)noti{
+    [self getData:@"load"];
+}
+
+- (void)getData:(NSString *)status{
     [SVProgressHUD show];
     [RequestFromNet getDataForCateList:CateListAPI succ:^(NSDictionary *dataDic) {
         [SVProgressHUD dismiss];
@@ -74,10 +86,31 @@
         
     } fault:^(NSError *error) {
         [SVProgressHUD dismiss];
-        [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
+        [self presentViewController:[Tools returnAlert] animated:YES completion:nil];
+        if (self.fatherArr.count > 0 && self.childArr.count > 0) {
+            self.err = nil;
+            [self.err removeFromSuperview];
+        }else{
+            [self.leftView removeFromSuperview];
+            [self.rightView removeFromSuperview];
+            self.rightView = nil;
+            self.leftView = nil;
+            [self createError];
+        }
     }];
 }
-
+- (void)createError{
+    if (!_err) {
+        _err = [[ErrorView alloc] init];
+        [self.view addSubview:_err];
+        _err.frame = CGRectMake(0, NavigationHeight, ScreenWidth,ScreenHeight - self.tabBarController.tabBar.frame.size.height - NavigationHeight);
+        [_err addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loan)]];
+    }
+}
+- (void)loan{
+    [NetWorkSingle new];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
+}
 
 /**
  *思路1

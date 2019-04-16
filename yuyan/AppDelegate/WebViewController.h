@@ -1,8 +1,8 @@
 //
-//  HomeViewController.h
+//  WebViewController.h
 //  yuyan
 //
-//  Created by tangfeimu on 2019/3/27.
+//  Created by tangfeimu on 2019/4/15.
 //  Copyright © 2019 tangfeimu. All rights reserved.
 //
 
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : BaseViewController
+@interface WebViewController : BaseViewController
 
-@property (nonatomic,assign)BOOL is_valid;
+@property (nonatomic,strong)NSString *url;
 
 @end
 
