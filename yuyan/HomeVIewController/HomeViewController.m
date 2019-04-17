@@ -19,12 +19,17 @@
 #import "SearchViewController.h"
 #import "HomeDetailViewController.h"
 #import "NewsViewController.h"
+#import "AdvertiseView.h"
 
 @interface HomeViewController ()<YSBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,SelectCityDelegate>
 
 @property (nonatomic,strong)HomeHeaderView *headerView;
 @property (nonatomic,strong)HomeTypeVIew *typeView;
 @property (nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic,strong)AdvertiseView *adver;
+@property (nonatomic,strong)UIView *coverView;
+@property (nonatomic,strong)UIWindow *window;
 
 @property (nonatomic,strong)YSBannerView *bannerView;
 
@@ -82,8 +87,50 @@
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"网络异常,请稍后重试"];
     }];
-
 }
+
+#pragma mark 弹窗请求
+- (void)getContentFromNet{
+    [RequestFromNet getDataForCustom:VersionAPI params:nil succ:^(NSDictionary *dataDic) {
+        if ([dataDic[@"status"] isEqualToString:@"success"]) {
+            if ([dataDic[@"data"][@"home_popup"][@"is_open"] isEqualToString:@"1"]) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self createAdvertise];
+                    self->_adver.title.text = dataDic[@"data"][@"home_popup"][@"title"];
+                    self->_adver.contentLabel.text = dataDic[@"data"][@"home_popup"][@"content"];
+                    self->_adver.backView.whc_Height(self->_adver.title.frame.size.height + self->_adver.contentLabel.frame.size.height + 300);
+                });
+            }
+        }
+    } fault:^(NSError *error) {
+        
+    }];
+}
+- (void)createAdvertise{
+    if (!_adver) {
+        
+        _window  = [UIApplication sharedApplication].keyWindow;//注：keyWindow当前显示界面的window
+        if (!_adver) {
+            _coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        }
+        _coverView.backgroundColor = [UIColor blackColor];
+        _coverView.alpha = 0.7;
+        _coverView.userInteractionEnabled = YES;
+        [_window addSubview:_coverView];
+        _adver = [[AdvertiseView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        [_adver.closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
+        _adver.userInteractionEnabled = YES;
+        [_window addSubview:_adver];
+        
+    }
+}
+- (void)closeAction{
+    [_coverView removeFromSuperview];
+    [_adver removeFromSuperview];
+    _coverView = nil;
+    _adver = nil;
+}
+
 #pragma mark --lazy
 - (void)createBanner{
     if (!_bannerView) {

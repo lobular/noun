@@ -43,6 +43,7 @@
 		832332F52265B60C001F0ED8 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332F42265B60C001F0ED8 /* ForgetViewController.m */; };
 		832332F82266B51C001F0ED8 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332F72266B51C001F0ED8 /* NewsViewController.m */; };
 		832332FB2266B554001F0ED8 /* NewsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332FA2266B554001F0ED8 /* NewsTableView.m */; };
+		832332FE226724D7001F0ED8 /* AdvertiseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332FD226724D6001F0ED8 /* AdvertiseView.m */; };
 		834E2202224B507D0022B6E8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2201224B507D0022B6E8 /* BaseViewController.m */; };
 		834E2205224B5E3E0022B6E8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2204224B5E3E0022B6E8 /* HomeViewController.m */; };
 		834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2207224B5F620022B6E8 /* ClassViewController.m */; };
@@ -175,6 +176,8 @@
 		832332F72266B51C001F0ED8 /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		832332F92266B554001F0ED8 /* NewsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTableView.h; sourceTree = "<group>"; };
 		832332FA2266B554001F0ED8 /* NewsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTableView.m; sourceTree = "<group>"; };
+		832332FC226724D6001F0ED8 /* AdvertiseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertiseView.h; sourceTree = "<group>"; };
+		832332FD226724D6001F0ED8 /* AdvertiseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertiseView.m; sourceTree = "<group>"; };
 		834E2200224B507D0022B6E8 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		834E2201224B507D0022B6E8 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		834E2203224B5E3E0022B6E8 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -569,6 +572,8 @@
 				834E226D225486F50022B6E8 /* HomeViewCell.m */,
 				834E226F2254A97A0022B6E8 /* HomeModel.h */,
 				834E22702254A97A0022B6E8 /* HomeModel.m */,
+				832332FC226724D6001F0ED8 /* AdvertiseView.h */,
+				832332FD226724D6001F0ED8 /* AdvertiseView.m */,
 				834E22722254C4630022B6E8 /* SelectCityViewController.h */,
 				834E22732254C4630022B6E8 /* SelectCityViewController.m */,
 				834E2299225604B40022B6E8 /* HomeTypeViewController.h */,
@@ -903,6 +908,7 @@
 				834E22772255D3510022B6E8 /* ClassHeaderVIew.m in Sources */,
 				832332C9225DBA5A001F0ED8 /* IdeaBackView.m in Sources */,
 				832332D9225DE8F8001F0ED8 /* WellModel.m in Sources */,
+				832332FE226724D7001F0ED8 /* AdvertiseView.m in Sources */,
 				832332E522604820001F0ED8 /* QuestionViewController.m in Sources */,
 				834E226B225456980022B6E8 /* HomeTypeVIew.m in Sources */,
 				834E228E2255E6BE0022B6E8 /* JDCategoryRightCollectionCell.m in Sources */,
