@@ -103,7 +103,6 @@
                     self.window.rootViewController = [[MainTabBarController alloc] init];
                     [self.window makeKeyAndVisible];
                 }else{
-                    
                     WebViewController *custom = [[WebViewController alloc] init];
                     self.window.rootViewController = custom;
                     [self.window makeKeyAndVisible];

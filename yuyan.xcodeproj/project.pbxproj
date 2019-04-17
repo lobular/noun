@@ -41,6 +41,8 @@
 		832332EE226067A1001F0ED8 /* QuestionAllView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332ED226067A1001F0ED8 /* QuestionAllView.m */; };
 		832332F2226452C7001F0ED8 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332F1226452C7001F0ED8 /* WebViewController.m */; };
 		832332F52265B60C001F0ED8 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332F42265B60C001F0ED8 /* ForgetViewController.m */; };
+		832332F82266B51C001F0ED8 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332F72266B51C001F0ED8 /* NewsViewController.m */; };
+		832332FB2266B554001F0ED8 /* NewsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832332FA2266B554001F0ED8 /* NewsTableView.m */; };
 		834E2202224B507D0022B6E8 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2201224B507D0022B6E8 /* BaseViewController.m */; };
 		834E2205224B5E3E0022B6E8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2204224B5E3E0022B6E8 /* HomeViewController.m */; };
 		834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E2207224B5F620022B6E8 /* ClassViewController.m */; };
@@ -169,6 +171,10 @@
 		832332F1226452C7001F0ED8 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		832332F32265B60C001F0ED8 /* ForgetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
 		832332F42265B60C001F0ED8 /* ForgetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
+		832332F62266B51C001F0ED8 /* NewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		832332F72266B51C001F0ED8 /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		832332F92266B554001F0ED8 /* NewsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTableView.h; sourceTree = "<group>"; };
+		832332FA2266B554001F0ED8 /* NewsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTableView.m; sourceTree = "<group>"; };
 		834E2200224B507D0022B6E8 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		834E2201224B507D0022B6E8 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		834E2203224B5E3E0022B6E8 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -504,6 +510,10 @@
 				834E22882255E6BD0022B6E8 /* JDCategoryRightCollectionView.m */,
 				834E22932255F8D40022B6E8 /* ClassModel.h */,
 				834E22942255F8D40022B6E8 /* ClassModel.m */,
+				832332F62266B51C001F0ED8 /* NewsViewController.h */,
+				832332F72266B51C001F0ED8 /* NewsViewController.m */,
+				832332F92266B554001F0ED8 /* NewsTableView.h */,
+				832332FA2266B554001F0ED8 /* NewsTableView.m */,
 			);
 			path = ClassViewController;
 			sourceTree = "<group>";
@@ -846,6 +856,7 @@
 				834E2214224B72B90022B6E8 /* BaseTableView.m in Sources */,
 				832332DC225F16E8001F0ED8 /* ExchangeViewController.m in Sources */,
 				834E225E2251BF570022B6E8 /* YSAnimatedDotView.m in Sources */,
+				832332FB2266B554001F0ED8 /* NewsTableView.m in Sources */,
 				83A93AE6224B21B100644BE2 /* Tools.m in Sources */,
 				83A93ADD224B181700644BE2 /* AppDelegate.m in Sources */,
 				834E226E225486F50022B6E8 /* HomeViewCell.m in Sources */,
@@ -870,6 +881,7 @@
 				832332F52265B60C001F0ED8 /* ForgetViewController.m in Sources */,
 				8323328C225AF298001F0ED8 /* SearchViewController.m in Sources */,
 				832332B6225C9AE4001F0ED8 /* ConverViewCell.m in Sources */,
+				832332F82266B51C001F0ED8 /* NewsViewController.m in Sources */,
 				834E2208224B5F620022B6E8 /* ClassViewController.m in Sources */,
 				8323329B225B5042001F0ED8 /* LoginView.m in Sources */,
 				83A93AE3224B1A9100644BE2 /* NetWorkSingle.m in Sources */,
@@ -1067,6 +1079,7 @@
 			baseConfigurationReference = FF0A60AB4D6566286D363C1D /* Pods-yuyan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = yuyan/yuyan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1090,6 +1103,7 @@
 			baseConfigurationReference = 1B8D0C72B7DD0A8C6E474D7A /* Pods-yuyan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = yuyan/yuyan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

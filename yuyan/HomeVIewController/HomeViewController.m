@@ -18,6 +18,7 @@
 #import "HomeTypeViewController.h"
 #import "SearchViewController.h"
 #import "HomeDetailViewController.h"
+#import "NewsViewController.h"
 
 @interface HomeViewController ()<YSBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,SelectCityDelegate>
 
@@ -47,8 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (self.is_valid) {
-        self.view.backgroundColor = [UIColor redColor];
-//        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Splash screen"]];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"screen"]];
     }else{
         [self createHeader];
         [self createBanner];
@@ -193,6 +193,7 @@
     [_headerView.city addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityAction)]];
     [_headerView.tipImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityAction)]];
     [_headerView.searchImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(searchAction)]];
+    [_headerView.newsImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(newAction)]];
 }
 #pragma mark 选择城市
 - (void)cityAction{
@@ -215,6 +216,12 @@
     SearchViewController *search = [[SearchViewController alloc] init];
     search.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:search animated:YES];
+}
+#pragma mark 消息
+- (void)newAction{
+    NewsViewController *new = [[NewsViewController alloc] init];
+    new.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:new animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

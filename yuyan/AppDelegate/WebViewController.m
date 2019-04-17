@@ -74,6 +74,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [SVProgressHUD show];
+    
     [self getUrl];
     //    }
     
@@ -161,6 +163,7 @@
 
 //开始加载
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    [SVProgressHUD dismiss];
     NSLog(@"开始加载网页");
     //开始加载网页时展示出progressView
     self.progressView.hidden = NO;

@@ -72,7 +72,7 @@
 @interface messageModel : NSObject
 
 @property (nonatomic,strong)NSString *title;
-@property (nonatomic,strong)NSString *description;
+@property (nonatomic,strong)NSString *des;
 @property (nonatomic,strong)NSString *created_time;
 @property (nonatomic,strong)NSString *h5_url;
 

@@ -44,6 +44,7 @@
     if (!_newsImage) {
         _newsImage = [UIImageView new];
         [self addSubview:_newsImage];
+        _newsImage.userInteractionEnabled = YES;
         _newsImage.whc_BottomSpace(27).whc_RightSpace(16)
         .whc_Width(18).whc_Height(16);
         _newsImage.image = [UIImage imageNamed:@"new_icon"];

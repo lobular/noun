@@ -18,6 +18,7 @@
 #import <AFNetworking.h>
 #import "NetWorkSingle.h"
 #import "Tools.h"
+#import "NewsViewController.h"
 
 @interface ClassViewController ()<UIScrollViewDelegate, UICollectionViewDelegate>
 
@@ -187,12 +188,20 @@
         [self.view addSubview:_headerView];
     }
     [_headerView.content addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(searchAction)]];
+    [_headerView.news addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(newsAction)]];
 }
 
 - (void)searchAction{
     SearchViewController *search = [[SearchViewController alloc] init];
     search.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:search animated:YES];
+}
+
+#pragma mark 消息列表
+- (void)newsAction{
+    NewsViewController *new = [[NewsViewController alloc] init];
+    new.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:new animated:YES];
 }
 
 - (void)push{

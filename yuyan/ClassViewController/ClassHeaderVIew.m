@@ -23,6 +23,7 @@
     if (!_news) {
         _news = [UIImageView new];
         [self addSubview:_news];
+        _news.userInteractionEnabled = YES;
         _news.whc_BottomSpace(13).whc_RightSpace(16).
         whc_Width(18).whc_Height(16);
         _news.image = [UIImage imageNamed:@"new_press_icon"];
