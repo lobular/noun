@@ -53,7 +53,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (self.is_valid) {
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"screen"]];
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"screen"]];
+        image.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        image.contentMode = UIViewContentModeScaleAspectFill;
+        [self.view addSubview:image];
     }else{
         [self createHeader];
         [self createBanner];
