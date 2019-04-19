@@ -10,7 +10,7 @@
 #import "YSBannerView.h"
 
 
-@interface HomeBannerViewCell : UITableViewCell
+@interface HomeBannerViewCell : UITableViewCell<YSBannerViewDelegate>
 
 @property (nonatomic,strong)YSBannerView *bannerView;
 

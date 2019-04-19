@@ -169,6 +169,7 @@
     if (indexPath.row == 0) {
         HomeBannerViewCell *cell = [HomeBannerViewCell initWithTable:tableView];
         [cell setValueForCell:self.bannerArr];
+        cell.bannerView.delegate = self;
         return cell;
     }
     if (indexPath.row == 1) {
