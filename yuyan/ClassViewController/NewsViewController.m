@@ -115,7 +115,7 @@
 
 - (void)createTableView{
     if (!_tableView) {
-        _tableView = [[NewsTableView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+        _tableView = [[NewsTableView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight - NavigationHeight) style:UITableViewStylePlain];
     }
     _tableView.arr = self.dataArr;
     [_tableView reloadData];

@@ -1,8 +1,8 @@
 //
-//  HomeTypeVIew.h
+//  HomeTypeViewCell.h
 //  yuyan
 //
-//  Created by tangfeimu on 2019/4/3.
+//  Created by tangfeimu on 2019/4/19.
 //  Copyright © 2019 tangfeimu. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 typedef void (^Success)(NSInteger num);
 
-@interface HomeTypeVIew : UIView
+@interface HomeTypeViewCell : UITableViewCell
 
 @property (nonatomic,strong)UIView *backView;
 @property (nonatomic,strong)UIImageView *typeImage;
@@ -19,5 +19,11 @@ typedef void (^Success)(NSInteger num);
 
 @property (nonatomic,copy)Success succ;
 
++ (instancetype)initWithTable:(UITableView *)table;
+
+
+- (void)config:(NSArray *)arr;
+
 @end
+
 

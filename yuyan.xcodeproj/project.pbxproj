@@ -57,7 +57,6 @@
 		834E22642251BF670022B6E8 /* YSBannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E22602251BF660022B6E8 /* YSBannerViewCell.m */; };
 		834E22652251BF670022B6E8 /* YSBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E22612251BF660022B6E8 /* YSBannerView.m */; };
 		834E22682254489B0022B6E8 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E22672254489B0022B6E8 /* HomeHeaderView.m */; };
-		834E226B225456980022B6E8 /* HomeTypeVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E226A225456980022B6E8 /* HomeTypeVIew.m */; };
 		834E226E225486F50022B6E8 /* HomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E226D225486F50022B6E8 /* HomeViewCell.m */; };
 		834E22712254A97A0022B6E8 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E22702254A97A0022B6E8 /* HomeModel.m */; };
 		834E22742254C4630022B6E8 /* SelectCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 834E22732254C4630022B6E8 /* SelectCityViewController.m */; };
@@ -84,6 +83,8 @@
 		83A93AFD224B273800644BE2 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AF7224B273700644BE2 /* UIView+Toast.m */; };
 		83A93AFE224B273800644BE2 /* ErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93AF8224B273700644BE2 /* ErrorView.m */; };
 		83A93B01224B433000644BE2 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A93B00224B433000644BE2 /* MainTabBarController.m */; };
+		83ABB4CB22699E5100A0F841 /* HomeTypeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ABB4CA22699E5100A0F841 /* HomeTypeViewCell.m */; };
+		83ABB4CE2269A02100A0F841 /* HomeBannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ABB4CD2269A02100A0F841 /* HomeBannerViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,8 +205,6 @@
 		834E22632251BF670022B6E8 /* YSBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSBannerView.h; sourceTree = "<group>"; };
 		834E22662254489B0022B6E8 /* HomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeaderView.h; sourceTree = "<group>"; };
 		834E22672254489B0022B6E8 /* HomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderView.m; sourceTree = "<group>"; };
-		834E2269225456980022B6E8 /* HomeTypeVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTypeVIew.h; sourceTree = "<group>"; };
-		834E226A225456980022B6E8 /* HomeTypeVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTypeVIew.m; sourceTree = "<group>"; };
 		834E226C225486F50022B6E8 /* HomeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewCell.h; sourceTree = "<group>"; };
 		834E226D225486F50022B6E8 /* HomeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewCell.m; sourceTree = "<group>"; };
 		834E226F2254A97A0022B6E8 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
@@ -259,6 +258,10 @@
 		83A93AFF224B433000644BE2 /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		83A93B00224B433000644BE2 /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		83A93B03224B466600644BE2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		83ABB4C922699E5100A0F841 /* HomeTypeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTypeViewCell.h; sourceTree = "<group>"; };
+		83ABB4CA22699E5100A0F841 /* HomeTypeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTypeViewCell.m; sourceTree = "<group>"; };
+		83ABB4CC2269A02100A0F841 /* HomeBannerViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBannerViewCell.h; sourceTree = "<group>"; };
+		83ABB4CD2269A02100A0F841 /* HomeBannerViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBannerViewCell.m; sourceTree = "<group>"; };
 		ED3E0D24465A31180A642ECF /* libPods-yuyan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yuyan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0A60AB4D6566286D363C1D /* Pods-yuyan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yuyan.debug.xcconfig"; path = "Target Support Files/Pods-yuyan/Pods-yuyan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -566,8 +569,10 @@
 				834E2204224B5E3E0022B6E8 /* HomeViewController.m */,
 				834E22662254489B0022B6E8 /* HomeHeaderView.h */,
 				834E22672254489B0022B6E8 /* HomeHeaderView.m */,
-				834E2269225456980022B6E8 /* HomeTypeVIew.h */,
-				834E226A225456980022B6E8 /* HomeTypeVIew.m */,
+				83ABB4CC2269A02100A0F841 /* HomeBannerViewCell.h */,
+				83ABB4CD2269A02100A0F841 /* HomeBannerViewCell.m */,
+				83ABB4C922699E5100A0F841 /* HomeTypeViewCell.h */,
+				83ABB4CA22699E5100A0F841 /* HomeTypeViewCell.m */,
 				834E226C225486F50022B6E8 /* HomeViewCell.h */,
 				834E226D225486F50022B6E8 /* HomeViewCell.m */,
 				834E226F2254A97A0022B6E8 /* HomeModel.h */,
@@ -901,7 +906,9 @@
 				832332A9225C8BBF001F0ED8 /* CreedHeaderViewCell.m in Sources */,
 				834E2211224B68F00022B6E8 /* BaseNavigationBar.m in Sources */,
 				832332AC225C8EDF001F0ED8 /* CreedDetailViewCell.m in Sources */,
+				83ABB4CE2269A02100A0F841 /* HomeBannerViewCell.m in Sources */,
 				832332A6225C8774001F0ED8 /* MyCreedViewController.m in Sources */,
+				83ABB4CB22699E5100A0F841 /* HomeTypeViewCell.m in Sources */,
 				832332C2225D88A6001F0ED8 /* ConverHeaderViewCell.m in Sources */,
 				834E2205224B5E3E0022B6E8 /* HomeViewController.m in Sources */,
 				832332D6225DD5F1001F0ED8 /* WellCollectionView.m in Sources */,
@@ -910,7 +917,6 @@
 				832332D9225DE8F8001F0ED8 /* WellModel.m in Sources */,
 				832332FE226724D7001F0ED8 /* AdvertiseView.m in Sources */,
 				832332E522604820001F0ED8 /* QuestionViewController.m in Sources */,
-				834E226B225456980022B6E8 /* HomeTypeVIew.m in Sources */,
 				834E228E2255E6BE0022B6E8 /* JDCategoryRightCollectionCell.m in Sources */,
 				832332EE226067A1001F0ED8 /* QuestionAllView.m in Sources */,
 				8323329E225C4ADE001F0ED8 /* RegisterView.m in Sources */,

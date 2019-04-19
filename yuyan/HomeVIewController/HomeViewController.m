@@ -10,7 +10,6 @@
 #import "HomeHeaderView.h"
 #import "YSBannerView.h"
 #import <UIImageView+WebCache.h>
-#import "HomeTypeVIew.h"
 #import "HomeViewCell.h"
 #import "RequestFromNet.h"
 #import <SVProgressHUD.h>
@@ -20,18 +19,19 @@
 #import "HomeDetailViewController.h"
 #import "NewsViewController.h"
 #import "AdvertiseView.h"
+#import "HomeTypeViewCell.h"
+#import "HomeBannerViewCell.h"
 
 @interface HomeViewController ()<YSBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,SelectCityDelegate>
 
 @property (nonatomic,strong)HomeHeaderView *headerView;
-@property (nonatomic,strong)HomeTypeVIew *typeView;
 @property (nonatomic,strong)UITableView *tableView;
 
 @property (nonatomic,strong)AdvertiseView *adver;
 @property (nonatomic,strong)UIView *coverView;
 @property (nonatomic,strong)UIWindow *window;
 
-@property (nonatomic,strong)YSBannerView *bannerView;
+@property (nonatomic,strong)NSArray *bannerArr;
 
 @property (nonatomic,strong)NSDictionary *dataDic;
 
@@ -49,6 +49,12 @@
     }
     return _dataDic;
 }
+- (NSArray *)bannerArr{
+    if (!_bannerArr) {
+        _bannerArr = [NSArray array];
+    }
+    return _bannerArr;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,7 +65,7 @@
         [self.view addSubview:image];
     }else{
         [self createHeader];
-        [self createBanner];
+//        [self createBanner];
         [self createTable];
         [self prepareData:nil];
     }
@@ -71,17 +77,18 @@
     [RequestFromNet getDataFromNetForHome:HomeAPI param:dic succ:^(NSDictionary *dataDic) {
         [SVProgressHUD dismiss];
         if ([dataDic[@"status"] isEqualToString:@"success"]) {
-            self.bannerView.downloadImageBlock =
-            ^(UIImageView *imageView, NSURL *url, UIImage *placeholderImage) {
-                [imageView sd_setImageWithURL:url placeholderImage:placeholderImage];
-            };
+//            self.bannerView.downloadImageBlock =
+//            ^(UIImageView *imageView, NSURL *url, UIImage *placeholderImage) {
+//                [imageView sd_setImageWithURL:url placeholderImage:placeholderImage];
+//            };
             NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
             self.dataDic = dataDic;
             for (BannerModel *model in self.dataDic[@"banner"]) {
                 [arr addObject:model.pic];
             }
-            self.bannerView.imageArray = arr;
-            [self createType];
+            self.bannerArr = arr;
+//            self.bannerView.imageArray = arr;
+//            [self createType];
             [self.tableView reloadData];
         }else{
             [SVProgressHUD showErrorWithStatus:dataDic[@"message"]];
@@ -133,62 +140,20 @@
     _coverView = nil;
     _adver = nil;
 }
-
-#pragma mark --lazy
-- (void)createBanner{
-    if (!_bannerView) {
-        _bannerView = [YSBannerView bannerViewWithFrame:CGRectMake(20, NavigationHeight, ScreenWidth - 40, 140)];
-        [_bannerView disableScrollGesture];
-        _bannerView.autoScrollTimeInterval = 2;
-        _bannerView.pageControlStyle = YSPageControlHollow;
-//        _bannerView.currentPageDotImage = [UIImage imageNamed:@"pageControlS"];
-//        _bannerView.pageDotImage = [UIImage imageNamed:@"pageControlN"];
-        _bannerView.pageControlBottomMargin = -10.0f;
-        _bannerView.delegate = self;
-        [self.view addSubview:_bannerView];
-    }
-}
-#pragma mark 分类
-- (void)createType{
-    if (!_typeView) {
-        _typeView = [[HomeTypeVIew alloc] initWithFrame:CGRectMake(0, NavigationHeight + 160, ScreenWidth, 107)];
-    }
-    for (UIView *back in _typeView.subviews) {
-        TypeModel *model = self.dataDic[@"type"][back.tag - 10000];
-        if ([back isKindOfClass:[UIView class]]) {
-            for (id temp in back.subviews) {
-                if ([temp isKindOfClass:[UIImageView class]]) {
-                    UIImageView *image = temp;
-//                    image.backgroundColor = [UIColor blueColor];
-                    [image sd_setImageWithURL:[NSURL URLWithString:model.pic]];
-                }
-                if ([temp isKindOfClass:[UILabel class]]) {
-                    UILabel *label = temp;
-                    label.text = model.title;
-                }
-            }
-        }
-    }
-    _typeView.userInteractionEnabled = YES;
-    [self clickAction];
-    [self.view addSubview:_typeView];
-}
 #pragma mark type点击事件
-- (void)clickAction{
+- (void)clickAction:(NSInteger)num{
     __weak typeof(self)weakSelf = self;
-    _typeView.succ = ^(NSInteger num) {
-        TypeModel *model = weakSelf.dataDic[@"type"][num - 10000];
-        HomeTypeViewController *type = [[HomeTypeViewController alloc] init];
-        type.ID = model.cate_id;
-        type.name = model.title;
-        type.hidesBottomBarWhenPushed = YES;
-        [weakSelf.navigationController pushViewController:type animated:YES];
-    };
+    TypeModel *model = weakSelf.dataDic[@"type"][num];
+    HomeTypeViewController *type = [[HomeTypeViewController alloc] init];
+    type.ID = model.cate_id;
+    type.name = model.title;
+    type.hidesBottomBarWhenPushed = YES;
+    [weakSelf.navigationController pushViewController:type animated:YES];
 }
 #pragma mark tableView
 - (void)createTable{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationHeight + 277, ScreenWidth, ScreenHeight - 287 - TabBarHeight - NavigationHeight ) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NavigationHeight, ScreenWidth, ScreenHeight - TabBarHeight - NavigationHeight ) style:UITableViewStylePlain];
     }
     [self.view addSubview:_tableView];
     _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
@@ -201,15 +166,35 @@
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        HomeBannerViewCell *cell = [HomeBannerViewCell initWithTable:tableView];
+        [cell setValueForCell:self.bannerArr];
+        return cell;
+    }
+    if (indexPath.row == 1) {
+        HomeTypeViewCell *cell = [HomeTypeViewCell initWithTable:tableView];
+        NSArray *arr = self.dataDic[@"type"];
+        [cell config:arr];
+        cell.succ = ^(NSInteger num) {
+            [self clickAction:num - 10000];
+        };
+        return cell;
+    }
     HomeViewCell *cell = [HomeViewCell cellWithTableView:tableView];
-    HomeModel *model = self.dataDic[@"creeds"][indexPath.row];
+    HomeModel *model = self.dataDic[@"creeds"][indexPath.row - 2];
     [cell setValueForCell:model];
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.dataDic[@"creeds"] count];
+    return [self.dataDic[@"creeds"] count] + 2;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 1) {
+        return 107;
+    }
+    if (indexPath.row == 0) {
+        return 140;
+    }
     return 90;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
