@@ -1098,7 +1098,7 @@
 				DEVELOPMENT_TEAM = SPQ8Z86263;
 				GCC_PREFIX_HEADER = "/Users/tfm/Desktop/tfm-yuyan/yuyan/Header.h";
 				INFOPLIST_FILE = yuyan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1122,7 +1122,7 @@
 				DEVELOPMENT_TEAM = SPQ8Z86263;
 				GCC_PREFIX_HEADER = "/Users/tfm/Desktop/tfm-yuyan/yuyan/Header.h";
 				INFOPLIST_FILE = yuyan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
