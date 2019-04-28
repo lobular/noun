@@ -41,32 +41,33 @@
         _resultLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         _resultLabel.font = FontSize(12);
         NSDictionary *dic = arr[i];
-        NSString *key = [dic allKeys][i];
-        if ([key integerValue] == 1 ||[key integerValue] == 2 || [key integerValue] == 3 ||[key integerValue] == 4) {
-            NSInteger num = [key integerValue] + 1;
-            NSString *str;
-            switch ([[dic[key] allKeys][0] integerValue]) {
-                case 1:
-                    str = @"A";
-                    break;
-                case 2:
-                    str = @"B";
-                    break;
-                case 3:
-                    str = @"C";
-                    break;
-                case 4:
-                    str = @"D";
-                    break;
-                default:
-                    break;
+         NSString *key = [dic allKeys][i];
+        if ([dic[key] isKindOfClass:[NSDictionary class]]) {
+            if ([key integerValue] == 0 ||[key integerValue] == 1 || [key integerValue] == 2 ||[key integerValue] == 3) {
+                NSInteger num = [key integerValue] + 1;
+                NSString *str;
+                switch ([[dic[key] allKeys][0] integerValue]) {
+                    case 1:
+                        str = @"A";
+                        break;
+                    case 2:
+                        str = @"B";
+                        break;
+                    case 3:
+                        str = @"C";
+                        break;
+                    case 4:
+                        str = @"D";
+                        break;
+                    default:
+                        break;
+                }
+                _resultLabel.text = [NSString stringWithFormat:@"第%ld道题的正确答案为:%@ .%@",num,str,[dic[key] allValues][0]];
             }
-            _resultLabel.text = [NSString stringWithFormat:@"第%ld道题的正确答案为:%@ .%@",num,str,[dic[key] allValues][0]];
         }else{
             NSRange range = NSMakeRange(4, [[NSString stringWithFormat:@"%@",dic[key]] length]);
             _resultLabel.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"您将获得%@雨燕币",dic[key]]] fontSize:16 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
         }
-        
     }
     if (!_converBtn) {
         _converBtn  = [UIButton buttonWithType:UIButtonTypeCustom];

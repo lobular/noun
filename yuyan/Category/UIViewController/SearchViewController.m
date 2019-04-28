@@ -12,6 +12,7 @@
 #import "YuYanLoginViewController.h"
 #import "HomeViewCell.h"
 #import "CreedNoneView.h"
+#import "HomeDetailViewController.h"
 
 @interface HeaderView : UIView
 
@@ -141,6 +142,13 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArr.count ;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    HomeModel *model = self.dataArr[indexPath.row ];
+    HomeDetailViewController *detail = [[HomeDetailViewController alloc] init];
+    detail.creed_id = model.creed_id;
+    detail.title = model.title;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return  90;

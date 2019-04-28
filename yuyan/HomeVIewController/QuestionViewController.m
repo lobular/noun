@@ -175,7 +175,7 @@
     if (is_Choose) {
         is_Choose = NO;
         nums ++;
-        if (nums == self.dataArr.count) {
+        if (nums == self.dataArr.count ) {
             [_questionView removeFromSuperview];
             _questionView = nil;
             [self createAllView];
