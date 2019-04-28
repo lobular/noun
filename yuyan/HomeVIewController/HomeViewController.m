@@ -58,18 +58,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (self.is_valid) {
-        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"screen"]];
-        image.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-        image.contentMode = UIViewContentModeScaleAspectFill;
-        [self.view addSubview:image];
-    }else{
         [self createHeader];
-//        [self createBanner];
         [self createTable];
-        [self prepareData:nil];
-    }
-
+    [self prepareData:@{@"city_id":@"1"}];
  
 }
 - (void)prepareData:(NSDictionary *)dic{
@@ -77,18 +68,12 @@
     [RequestFromNet getDataFromNetForHome:HomeAPI param:dic succ:^(NSDictionary *dataDic) {
         [SVProgressHUD dismiss];
         if ([dataDic[@"status"] isEqualToString:@"success"]) {
-//            self.bannerView.downloadImageBlock =
-//            ^(UIImageView *imageView, NSURL *url, UIImage *placeholderImage) {
-//                [imageView sd_setImageWithURL:url placeholderImage:placeholderImage];
-//            };
             NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
             self.dataDic = dataDic;
             for (BannerModel *model in self.dataDic[@"banner"]) {
                 [arr addObject:model.pic];
             }
             self.bannerArr = arr;
-//            self.bannerView.imageArray = arr;
-//            [self createType];
             [self.tableView reloadData];
         }else{
             [SVProgressHUD showErrorWithStatus:dataDic[@"message"]];
@@ -183,6 +168,7 @@
     }
     HomeViewCell *cell = [HomeViewCell cellWithTableView:tableView];
     HomeModel *model = self.dataDic[@"creeds"][indexPath.row - 2];
+//    NSLog(@"%@",model.title);
     [cell setValueForCell:model];
     return cell;
 }
@@ -224,7 +210,7 @@
     if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"city"] length] > 0) {
         _headerView.city.text = [[NSUserDefaults standardUserDefaults]objectForKey:@"city"];
     }else{
-        _headerView.city.text = @"all";
+        _headerView.city.text = @"杭州";
     }
     [_headerView.city addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityAction)]];
     [_headerView.tipImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cityAction)]];
@@ -242,7 +228,6 @@
 }
 #pragma mark 选择城市代理
 - (void)sendValueToHome:(NSDictionary *)dic{
-    NSLog(@"======%@",dic);
     _headerView.city.text = dic[@"city_name"];
     [self prepareData:@{@"city_id":dic[@"city_id"]}];
 }

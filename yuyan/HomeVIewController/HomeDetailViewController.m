@@ -150,9 +150,9 @@
         _tip.whc_LeftSpace(16).whc_TopSpaceToView(37, _line);
         _tip.textColor = [UIColor textColorWithType:0];
         if ([self.fromWhich isEqualToString:@"well"]) {
-            _tip.text = [NSString stringWithFormat:@"%@信条",self.dataDic[@"creed_price"]];
+            _tip.text = [NSString stringWithFormat:@"%@雨燕币",self.dataDic[@"creed_price"]];
         }else{
-            _tip.text = [NSString stringWithFormat:@"答题成功将获得%@信条",self.model.creed_award];
+            _tip.text = [NSString stringWithFormat:@"答题成功将获得%@雨燕币",self.model.creed_award];
         }
         _tip.font = FontSize(13);
     }
@@ -166,7 +166,7 @@
            _num.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"还剩%@个",self.dataDic[@"num"]]] fontSize:13 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
         }else{
             NSRange range = NSMakeRange(2, [self.model.creed_remain length]);
-        _num.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"还剩%@信条",self.model.creed_remain]] fontSize:13 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
+        _num.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"还剩%@雨燕币",self.model.creed_remain]] fontSize:13 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
         }
     }
     if (!_btn) {
@@ -185,7 +185,7 @@
             [_btn addTarget:self action:@selector(exchangeAction:) forControlEvents:UIControlEventTouchUpInside];
         }else{
             _btn.tag = 10001;
-            [_btn setTitle:@"答题赢信条" forState:UIControlStateNormal];
+            [_btn setTitle:@"答题赢雨燕币" forState:UIControlStateNormal];
         }
         [_btn setTitleColor:[UIColor textColorWithType:0] forState:UIControlStateNormal];
         _btn.titleLabel.font = FontSize(16);
@@ -198,12 +198,12 @@
 - (void)exchangeAction:(UIButton *)btn{
     if (btn.tag == 10000) {
          if ([self.dataDic[@"creed_price"] integerValue] > [[KeyChain objectWithKey:@"score"] integerValue]) {
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前信条数不够" preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前雨燕币数不够" preferredStyle:UIAlertControllerStyleAlert];
              UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
              [alertController addAction:cancelAction];
              [self presentViewController:alertController animated:YES completion:nil];
          }else{
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"确定使用%@信条兑换",self.dataDic[@"creed_price"]] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"确定使用%@雨燕币兑换",self.dataDic[@"creed_price"]] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是的" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 ExchangeViewController *exchange = [[ExchangeViewController alloc] init];

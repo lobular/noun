@@ -50,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavigationTitle:@"我的信条" LeftBtnHidden:NO RightBtnHidden:YES];
+    [self setNavigationTitle:@"我的雨燕币" LeftBtnHidden:NO RightBtnHidden:YES];
     self.navigationBar.backgroundColor = [UIColor colorWithHexString:@"#FFE656"];
     
     self.navigationBar.bottomview.backgroundColor = [UIColor clearColor];

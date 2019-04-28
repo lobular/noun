@@ -53,8 +53,8 @@
         }else{
             NSString *str = [KeyChain objectWithKey:@"score"] ? [KeyChain objectWithKey:@"score"] : @"*";
             NSString *content = [NSString stringWithFormat:@"%@",str];
-            NSRange range = NSMakeRange(2,[content length]);
-          _name.attributedText =  [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"信条%@",str]] fontSize:14 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
+            NSRange range = NSMakeRange(3,[content length]);
+          _name.attributedText =  [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"雨燕币%@",str]] fontSize:14 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
         }
     }
 }

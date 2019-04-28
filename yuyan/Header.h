@@ -31,7 +31,7 @@
 #define TabBarHeight self.tabBarController.tabBar.frame.size.height
 #define FontSize(x) [UIFont systemFontOfSize:x]
 
-#define URL @"http://192.168.112.232/index.php"
+#define URL @"http://api.ke2.yuyanxt.com/index.php"
 
 #define HomeAPI [NSString stringWithFormat:@"%@/v1/creed/index",URL]
 #define CateListAPI [NSString stringWithFormat:@"%@/v1/creed/cate-list",URL]   

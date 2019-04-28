@@ -156,7 +156,7 @@
     }
     if (indexPath.section == 2) {
         ExchangeOrderInfo *cell = [ExchangeOrderInfo initWithTable:tableView];
-        cell.amount.text = [NSString stringWithFormat:@"支付金额:%@信条",self.dataDic[@"pay_creed"]];
+        cell.amount.text = [NSString stringWithFormat:@"支付金额:%@雨燕币",self.dataDic[@"pay_creed"]];
         cell.num.text = [NSString stringWithFormat:@"订单编号:%@",self.dataDic[@"order_no"]];
         cell.time.text = [NSString stringWithFormat:@"下单时间%@",self.dataDic[@"valid"]];
 

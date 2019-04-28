@@ -39,15 +39,16 @@
     [[IQKeyboardManager sharedManager] setKeyboardDistanceFromTextField:50.0];
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
     
-    is_first = YES;
-    
-    
-    HomeViewController *home = [[HomeViewController alloc] init];
-    self.window.rootViewController = home;
-    home.is_valid = YES;
+    self.window.rootViewController = [[MainTabBarController alloc] init];
     [self.window makeKeyAndVisible];
     
-    [self getVersion];
+    
+//    HomeViewController *home = [[HomeViewController alloc] init];
+//    self.window.rootViewController = home;
+//    home.is_valid = YES;
+//    [self.window makeKeyAndVisible];
+//    
+//    [self getVersion];
     
     [self netWorkChangeEvent];
     

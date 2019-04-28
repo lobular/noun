@@ -39,7 +39,7 @@
         [self addSubview:_title];
         _title.whc_BottomSpace(20).whc_CenterX(0);
         _title.textColor = [UIColor textColorWithType:0];
-        _title.text = @"雨燕信条";
+        _title.text = @"雨燕宝";
     }
     if (!_newsImage) {
         _newsImage = [UIImageView new];

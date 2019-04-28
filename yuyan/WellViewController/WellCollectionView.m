@@ -36,7 +36,6 @@
         _ticket = [UIImageView new];
         [self.contentView addSubview:_ticket];
         _ticket.whc_CenterX(0).whc_LeftSpace(12).whc_RightSpace(12).whc_Height(74 *ScaleHeight).whc_TopSpace(20);
-        _ticket.backgroundColor = [UIColor orangeColor];
     }
     if (!_name) {
         _name = [UILabel new];
@@ -84,8 +83,9 @@
     WellCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     WellModel *model = self.arr[indexPath.row];
     cell.name.text = model.title;
+    [cell.ticket sd_setImageWithURL:[NSURL URLWithString:model.thumb]];
     NSRange range = NSMakeRange(0,[model.creed_price length]);
-    cell.xintiao.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@信条",model.creed_price]] fontSize:14 color:[UIColor colorWithHexString:@"#FF6000"] rang:range];
+    cell.xintiao.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@雨燕币",model.creed_price]] fontSize:14 color:[UIColor colorWithHexString:@"#FF6000"] rang:range];
     return cell;
 }
 

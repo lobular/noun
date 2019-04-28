@@ -75,7 +75,7 @@
         _num = [UILabel new];
         [self.contentView addSubview:_num];
         _num.whc_TopSpace(20).whc_RightSpace(20);
-        _num.text = @"20信条";
+        _num.text = @"20雨燕币";
         _num.textColor = [UIColor colorWithHexString:@"#FD6D08"];
         _num.font = FontSize(16);
     }
@@ -102,7 +102,7 @@
     [_tipImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.thumb]]];
     _addLabel.text = model.address;
     _name.text = model.title;
-    _num.text = [NSString stringWithFormat:@"%@信条",model.creed_award];
+    _num.text = [NSString stringWithFormat:@"%@雨燕币",model.creed_award];
 }
 
 @end

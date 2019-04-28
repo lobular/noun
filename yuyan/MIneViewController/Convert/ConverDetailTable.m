@@ -164,14 +164,14 @@
         ConverGoods *cell = [ConverGoods initWithTable:tableView];
         if (indexPath.row == 1) {
             cell.tip.hidden = YES;
-            NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"实付%@信条",self.dic[@"pay_creed"]]];
+            NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"实付%@雨燕币",self.dic[@"pay_creed"]]];
             NSRange range = NSMakeRange(0,2);
             // 改变字体大小及类型
             [noteStr addAttribute:NSForegroundColorAttributeName value:[UIColor textColorWithType:1] range:range];
             // 为label添加Attributed
             [cell.amount setAttributedText:noteStr];
         }else{
-            cell.amount.text = [NSString stringWithFormat:@"%@信条",self.dic[@"creed_price"]];
+            cell.amount.text = [NSString stringWithFormat:@"%@雨燕币",self.dic[@"creed_price"]];
         }
         return cell;
     }

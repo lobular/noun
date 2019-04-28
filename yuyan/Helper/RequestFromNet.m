@@ -19,7 +19,7 @@
 
 //首页
 + (void)getDataFromNetForHome:(NSString *)url param:(NSDictionary *)params succ:(Succ)succ fault:(Fault)fault;{
-    [NetWorkSingle getWithURLString:url parameters:nil success:^(id responseObject) {
+    [NetWorkSingle getWithURLString:url parameters:params success:^(id responseObject) {
         NSArray *banner = [BannerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"banners"]];
         NSArray *creeds = [HomeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"creeds"]];
         NSArray *type = [TypeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"cate_list"]];

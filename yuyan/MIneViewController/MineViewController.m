@@ -77,7 +77,7 @@
         cell.btn.userInteractionEnabled = NO;
         cell.btn.backgroundColor = [UIColor clearColor];
         [cell.btn setTitleColor:[UIColor textColorWithType:1] forState:UIControlStateNormal];
-        [cell.btn setTitle:[NSString stringWithFormat:@"当前信条：%@",[KeyChain objectWithKey:@"score"]] forState:UIControlStateNormal];
+        [cell.btn setTitle:[NSString stringWithFormat:@"当前雨燕币：%@",[KeyChain objectWithKey:@"score"]] forState:UIControlStateNormal];
     }else{
         cell.name.text = @"欢迎来到雨燕";
         cell.btn.userInteractionEnabled = YES;

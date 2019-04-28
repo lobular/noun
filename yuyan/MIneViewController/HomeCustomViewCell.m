@@ -64,7 +64,7 @@ static NSString *ID = @"cell";
 
 - (void)setValueForCell:(NSInteger)row{
     if (row == 0) {
-       self.tipLabel.text = @"我的信条";
+       self.tipLabel.text = @"我的雨燕币";
         _tipImage.image = [UIImage imageNamed:@"creed_icon"];
     }
     if (row == 1) {

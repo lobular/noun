@@ -64,7 +64,7 @@
             _resultLabel.text = [NSString stringWithFormat:@"第%ld道题的正确答案为:%@ .%@",num,str,[dic[key] allValues][0]];
         }else{
             NSRange range = NSMakeRange(4, [[NSString stringWithFormat:@"%@",dic[key]] length]);
-            _resultLabel.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"您将获得%@信条",dic[key]]] fontSize:16 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
+            _resultLabel.attributedText = [Tools text:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"您将获得%@雨燕币",dic[key]]] fontSize:16 color:[UIColor colorWithHexString:@"#FD6D08"] rang:range];
         }
         
     }

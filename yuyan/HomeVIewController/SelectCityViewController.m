@@ -47,13 +47,22 @@
         _open.font = FontSize(13);
     }
     NSInteger num;
-    if (self.openCity.count / 3 > 0) {
-        num = (self.openCity.count / 3 + self.openCity.count %3 );
+    if (self.openCity.count / 3 > 0 && self.openCity.count > 3) {
+        if (self.openCity.count % 3 == 0) {
+            num = self.openCity.count / 3;
+        }else{
+            num = (self.openCity.count / 3 + 1 );
+        }
     }else{
         num = 1 ;
     }
     for (int i = 0; i < num ; i ++) {
-        NSInteger p = (i == num - 1 ? self.openCity.count % 3 : 3);
+        NSInteger p;
+        if (self.openCity.count != 3) {
+            p = (i == num - 1 ? self.openCity.count % 3 : 3);
+        }else{
+            p = 3;
+        }
         for (int j = 0; j < p ; j ++) {
             CityModel *model = self.openCity[i * 3 + j ];
             _backImage = [UIImageView new];
